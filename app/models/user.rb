@@ -33,7 +33,7 @@ class User < ApplicationRecord
   # has_one :image
 
   def self.find_by_credentials(username, password)
-    user = User.find_by(username: username, password: password)
+    user = User.find_by(username: username)
     user && is_password?(password) ? user : nil
   end
 
