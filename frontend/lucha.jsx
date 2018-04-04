@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-// test
-import * as actions from './actions/session_actions';
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
