@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
       password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   update(field) {
@@ -20,6 +21,12 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = {user: Object.assign({}, this.state)};
+    this.props.processForm(user);
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    const user = {user: {username: 'peter@demo.user', password: 'password'}};
     this.props.processForm(user);
   }
 
@@ -60,11 +67,10 @@ class LoginForm extends React.Component {
             <br/>
             <input type="submit"
               className="session-submit"
-              value={this.props.formType}
             />
             <h3 className="session-form-separator">or</h3>
             <div className = "session-options">
-              <button className="demo-button">Demo User</button>
+              <button className="demo-button" onClick={this.handleDemo}>Demo User</button>
               <button className="tour-button">Take Tour</button>
             </div>
           </div>
@@ -74,4 +80,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);
