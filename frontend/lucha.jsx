@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as SessionAPIUtil from './util/session_api_util';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const rootEl = document.getElementById("root");
+import configureStore from './store/store';
 
-  window.login = SessionAPIUtil.login;
-  window.logout = SessionAPIUtil.logout;
-  window.signup = SessionAPIUtil.signup;
+document.addEventListener('DOMContentLoaded', () => {
+  const store = configureStore();
+
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+
+  const rootEl = document.getElementById("root");
 
   ReactDOM.render(<h1>Bienvenido a Lucha</h1>, rootEl);
 });
