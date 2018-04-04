@@ -8,6 +8,8 @@ const sessionLinks = () => (
     <Link to="/signup">Sign up</Link>
     &nbsp;or&nbsp;
     <Link to="/demo">Demo User</Link>
+    &nbsp;or&nbsp;
+    <Link to="/tour">Take Tour</Link>
   </nav>
 );
 
