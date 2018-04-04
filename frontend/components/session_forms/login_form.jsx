@@ -50,6 +50,23 @@ class LoginForm extends React.Component {
               className="login-input"
               placeholder="Your email"
             />
+            <br/>
+            <input type="password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              className="login-input"
+              placeholder="Password"
+            />
+            <br/>
+            <input type="submit"
+              className="session-submit"
+              value={this.props.formType}
+            />
+            <h3 className="session-form-separator">or</h3>
+            <div className = "session-options">
+              <button className="demo-button">Demo User</button>
+              <button className="tour-button">Take Tour</button>
+            </div>
           </div>
         </form>
       </div>
