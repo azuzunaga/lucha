@@ -7,14 +7,14 @@ import Root from './components/root';
 import * as actions from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const store = configureStore();
-
-  //
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.login = actions.login;
-
-  //
+  let store;
+  if (window.currentUser) {
+    const preloadedState = { session: { currentUser: window.currentUser } };
+    store = configureStore(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = configureStore();
+  }
 
   const rootEl = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, rootEl);
