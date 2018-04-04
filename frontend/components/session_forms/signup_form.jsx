@@ -76,7 +76,6 @@ class SignupForm extends React.Component {
             <br/>
             <input type="submit"
               className="session-submit"
-              value={this.props.formType}
             />
             <h3 className="session-form-separator">or</h3>
             <div className = "session-options">
@@ -90,4 +89,4 @@ class SignupForm extends React.Component {
   }
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);
