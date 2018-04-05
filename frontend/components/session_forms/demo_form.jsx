@@ -15,17 +15,23 @@ class DemoForm extends React.Component {
 
   componentDidMount() {
     // this.typeWriter(0, "demo-user", this.state.username);
-    this.typeWriter(0, "demo-user", this.state.username);
-    this.typeWriter(0, "demo-pass", this.state.password);
+    // this.typeWriter(0, "demo-pass", this.state.password);
+    this.typeWriter(0, "demo-user", this.state.username,
+      "demo-pass", this.state.password, this.typeWriter);
+
     setTimeout(this.handleSubmit, 10000);
   }
 
 
-  typeWriter(j, field, text) {
+  typeWriter(j, field, text, field2, text2, callback) {
     if (j < text.length) {
       document.getElementById(field).value += text.charAt(j);
       j = j + 1;
       setTimeout(this.typeWriter, 50, j, field, text);
+    }
+    
+    if (typeof callback === "function") {
+      callback(j, field2, text2);
     }
   }
 
