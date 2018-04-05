@@ -14,40 +14,62 @@
  *= require_self
  */
 // Google Fonts
-@import url('https://fonts.googleapis.com/css?family=Freckle+Face');
+@import url('https://fonts.googleapis.com/css?family=Gugi');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 
 // Font Varibles
-$logo: 'Freckle Face', cursive;
-$roboto: 'Roboto', sans-serif;
+$logo: 'Gugi', cursive;
+$main-font: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
 
 // Color Variables
-$corporate: #419149;
+$corporate: #005260;
 $sep-gray: #E6E6EB;
 $border-gray: #cccccc;
 
-#logo {
-  font-family: $logo;
-  font-size: 30px;
-  color: $corporate;
-}
-
-.login-signup-demo {
+#user-dropdown-btn {
   display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid $sep-gray;
-  padding: 0 16px;
-  height: 50px;
   align-items: center;
 }
 
-.login-button {
-  border-radius: 3px;
-  border: 1px solid $border-gray;
-  font-size: 14px;
-  text-decoration: none;
-  font-family: $roboto;
-  padding: 10px 30px;
-  font-weight: 700;
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.header-logo {
   color: $corporate;
+  font-family: $logo;
+  font-size: 30px;
 }
+
+// .header-content {
+//   display: flex;
+//   border-bottom: 1px solid $sep-gray;
+//   height: 50px;
+//   justify-content: space-around;
+//   min-width: 250px;
+//
+//   div {
+//     font-family: $logo;
+//     font-size: 30px;
+//     color: $corporate;
+//     margin: auto 0;
+//     padding-top: 4px;
+//   }
+// }
+//
+// .login-nav {
+//   border-radius: 5px;
+//   border: 1px solid $border-gray;
+//   font-size: 14px;
+//   font-family: $main-font;
+//   padding: 10px 30px;
+//   margin: auto 0;
+//
+//   a {
+//     text-decoration: none;
+//     color: $corporate;
+//     font-weight: 700;
+//     line-height: 1.5;
+//   }
+// }
