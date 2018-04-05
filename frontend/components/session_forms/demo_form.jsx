@@ -16,22 +16,26 @@ class DemoForm extends React.Component {
   componentDidMount() {
     // this.typeWriter(0, "demo-user", this.state.username);
     // this.typeWriter(0, "demo-pass", this.state.password);
-    this.typeWriter(0, "demo-user", this.state.username,
-      "demo-pass", this.state.password, this.typeWriter);
 
-    setTimeout(this.handleSubmit, 10000);
+    setTimeout(
+      this.typeWriter, 400,
+      0, "demo-user", this.state.username
+    );
+
+    setTimeout(
+      this.typeWriter, 2075,
+      0, "demo-pass", this.state.password
+    );
+
+    setTimeout(this.handleSubmit, 3075);
   }
 
 
-  typeWriter(j, field, text, field2, text2, callback) {
+  typeWriter(j, field, text) {
     if (j < text.length) {
       document.getElementById(field).value += text.charAt(j);
       j = j + 1;
-      setTimeout(this.typeWriter, 50, j, field, text);
-    }
-    
-    if (typeof callback === "function") {
-      callback(j, field2, text2);
+      setTimeout(this.typeWriter, 75, j, field, text);
     }
   }
 
@@ -64,9 +68,7 @@ class DemoForm extends React.Component {
               readOnly
             />
             <br/>
-            <input type="submit"
-              className="session-submit"
-            />
+            <input type="submit" className="session-submit" id="demo-submit"/>
             <h3 className="session-form-separator">or</h3>
             <div className = "session-options">
               <button className="demo-button">Demo User</button>
