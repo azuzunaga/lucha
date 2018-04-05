@@ -23,8 +23,7 @@ $main-font: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica
 
 // Color Variables
 $corporate: #005260;
-$sep-gray: #E6E6EB;
-$border-gray: #cccccc;
+$gray: #cccccc;
 
 #user-dropdown-btn {
   display: flex;
@@ -40,7 +39,54 @@ $border-gray: #cccccc;
   color: $corporate;
   font-family: $logo;
   font-size: 30px;
+  padding-top: 4px;
 }
+
+.header-nav {
+  display: flex;
+  border-bottom: 1px solid $gray;
+  justify-content: space-between;
+  font-family: $main-font;
+  height: 50px;
+  align-items: center;
+  min-width: 250px;
+
+  .left-nav {
+    display: flex;
+    padding-left: 5vw;
+  }
+
+  .right-nav {
+    padding-right: 5vw;
+  }
+
+  .left-nav > ul {
+    display: flex;
+  }
+
+  .right-nav > ul {
+    display: flex;
+  }
+
+  .header-button {
+    color: $corporate;
+    font-weight: 700;
+    border: 1px solid $gray;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+  }
+
+  .header-button:hover {
+    background-color: gainsboro;
+    border-color: darkgrey;
+  }
+
+
+}
+
+
 
 // .header-content {
 //   display: flex;
