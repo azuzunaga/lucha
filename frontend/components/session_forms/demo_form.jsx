@@ -10,10 +10,24 @@ class DemoForm extends React.Component {
       password: 'password',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.uTypeWriter = this.uTypeWriter.bind(this);
+    this.speed = 50;
+    this.i = 0;
+
   }
 
   componentDidMount() {
-    setTimeout(this.handleSubmit, 2100);
+    this.uTypeWriter();
+    setTimeout(this.handleSubmit, 10000);
+  }
+
+
+  uTypeWriter() {
+    if (this.i < this.state.username.length) {
+      document.getElementById("demo-user").value += this.state.username.charAt(this.i);
+      this.i = this.i + 1;
+      setTimeout(this.uTypeWriter, this.speed);
+    }
   }
 
   handleSubmit() {
@@ -29,12 +43,20 @@ class DemoForm extends React.Component {
           <br/>
           <div className="login-form">
             <br/>
-            <Typist cursor={{ show: false }} className="demo-animation">
-              <button id='demo-user'>ame.zuz@gmail.com</button>
-              <Typist.Delay />
-              <br/>
-              <button id="demo-password">●●●●●●●</button>
-            </Typist>
+            <input type="text"
+              value=""
+              className="login-input"
+              placeholder="Your email"
+              id="demo-user"
+              // readOnly
+            />
+            <br/>
+            <input type="password"
+              value=""
+              className="login-input"
+              placeholder="Password"
+              readOnly
+            />
             <br/>
             <input type="submit"
               className="session-submit"
