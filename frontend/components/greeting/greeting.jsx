@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 const sessionLinks = () => (
   <nav className="login-signup-demo">
-    <Link to="/login">LOG IN</Link>
-    &nbsp;or&nbsp;
-    <Link to="/signup">Sign up</Link>
-    &nbsp;or&nbsp;
-    <Link to="/demo">Demo User</Link>
-    {/* &nbsp;or&nbsp; */}
-    {/* <Link to="/tour">Take Tour</Link> */}
+    <h1 id="logo">LUCHA</h1>
+    <Link to="/login"
+      id="splash-login-button"
+      className="login-button"
+    >
+      LOG IN
+    </Link>
   </nav>
 );
 

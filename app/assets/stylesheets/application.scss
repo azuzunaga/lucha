@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Freckle+Face');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
+// Font Varibles
+$logo: 'Freckle Face', cursive;
+$roboto: 'Roboto', sans-serif;
+
+// Color Variables
+$corporate: #419149;
+$sep-gray: #E6E6EB;
+$border-gray: #cccccc;
+
+#logo {
+  font-family: $logo;
+  font-size: 30px;
+  color: $corporate;
+}
+
+.login-signup-demo {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $sep-gray;
+  padding: 0 16px;
+  height: 50px;
+  align-items: center;
+}
+
+.login-button {
+  border-radius: 3px;
+  border: 1px solid $border-gray;
+  font-size: 14px;
+  text-decoration: none;
+  font-family: $roboto;
+  padding: 10px 30px;
+  font-weight: 700;
+  color: $corporate;
+}

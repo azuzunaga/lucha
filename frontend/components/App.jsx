@@ -16,13 +16,19 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = () => (
   <div>
     <header>
-      <h1>Lucha - Track your activities</h1>
       <GreetingContainer />
     </header>
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch>
+    <div>
+      <Link to="/signup">Sign up</Link>
+      <div className="or-text">or</div>
+      <Link to="/demo">Demo User</Link>
+      {/* &nbsp;or&nbsp; */}
+      {/* <Link to="/tour">Take Tour</Link> */}
+    </div>
   </div>
 );
 
