@@ -10,23 +10,22 @@ class DemoForm extends React.Component {
       password: 'password',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.uTypeWriter = this.uTypeWriter.bind(this);
-    this.speed = 50;
-    this.i = 0;
-
+    this.typeWriter = this.typeWriter.bind(this);
   }
 
   componentDidMount() {
-    this.uTypeWriter();
+    // this.typeWriter(0, "demo-user", this.state.username);
+    this.typeWriter(0, "demo-user", this.state.username);
+    this.typeWriter(0, "demo-pass", this.state.password);
     setTimeout(this.handleSubmit, 10000);
   }
 
 
-  uTypeWriter() {
-    if (this.i < this.state.username.length) {
-      document.getElementById("demo-user").value += this.state.username.charAt(this.i);
-      this.i = this.i + 1;
-      setTimeout(this.uTypeWriter, this.speed);
+  typeWriter(j, field, text) {
+    if (j < text.length) {
+      document.getElementById(field).value += text.charAt(j);
+      j = j + 1;
+      setTimeout(this.typeWriter, 50, j, field, text);
     }
   }
 
@@ -48,13 +47,14 @@ class DemoForm extends React.Component {
               className="login-input"
               placeholder="Your email"
               id="demo-user"
-              // readOnly
+              readOnly
             />
             <br/>
             <input type="password"
               value=""
               className="login-input"
               placeholder="Password"
+              id="demo-pass"
               readOnly
             />
             <br/>
