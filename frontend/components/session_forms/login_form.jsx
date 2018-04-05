@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -70,8 +70,8 @@ class LoginForm extends React.Component {
             />
             <h3 className="session-form-separator">or</h3>
             <div className = "session-options">
-              <button className="demo-button" onClick={this.handleDemo}>Demo User</button>
-              <button className="tour-button">Take Tour</button>
+              <Link className="demo-button" to="/demo">Demo User</Link>
+              {/* <button className="tour-button">Take Tour</button> */}
             </div>
           </div>
         </form>
