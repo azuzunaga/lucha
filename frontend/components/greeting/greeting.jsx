@@ -4,17 +4,15 @@ import { Link } from 'react-router-dom';
 const sessionLinks = () => (
     <nav className="header-nav">
 
-      <h1 className="left-nav">
+      <nav className="left-nav">
         <a href="#" className="header-logo">LUCHA</a>
-      </h1>
+      </nav>
 
-      <ul className="header-list right-nav">
-        <li className="header-button">
-          <Link to="/login" id="splash-login-button">
-            LOG IN
-          </Link>
-        </li>
-      </ul>
+      <nav className="header-button right-nav">
+        <Link to="/login" id="splash-login-button">
+          LOG IN
+        </Link>
+      </nav>
 
     </nav>
 );

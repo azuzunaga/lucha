@@ -57,6 +57,7 @@ $gray: #cccccc;
   }
 
   .right-nav {
+    display: flex;
     padding-right: 5vw;
   }
 
@@ -68,7 +69,7 @@ $gray: #cccccc;
     display: flex;
   }
 
-  .header-button {
+  #splash-login-button {
     color: $corporate;
     font-weight: 700;
     border: 1px solid $gray;
@@ -78,7 +79,7 @@ $gray: #cccccc;
     transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
   }
 
-  .header-button:hover {
+  #splash-login-button:hover {
     background-color: gainsboro;
     border-color: darkgrey;
   }
