@@ -11,6 +11,9 @@ import {
 import GreetingContainer from './greeting/greeting_container';
 import LoginFormContainer from './session_forms/login_form_container';
 import SignupFormContainer from './session_forms/signup_form_container';
+import SplashForm from './session_forms/splash_form';
+import DemoFormContainer from './session_forms/demo_form_container';
+
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -21,14 +24,9 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <AuthRoute exact path="/demo" component={DemoFormContainer} />
+      <Route exact path="/" component={SplashForm} />
     </Switch>
-    <div>
-      <Link to="/signup">Sign up</Link>
-      <div className="or-text">or</div>
-      <Link to="/demo">Demo User</Link>
-      {/* &nbsp;or&nbsp; */}
-      {/* <Link to="/tour">Take Tour</Link> */}
-    </div>
   </div>
 );
 
