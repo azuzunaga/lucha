@@ -72,7 +72,7 @@ class DemoForm extends React.Component {
             <h3 className="session-form-separator">or</h3>
             <div className = "session-options">
               <button className="demo-button">Demo User</button>
-              <button className="tour-button">Take Tour</button>
+              {/* <button className="tour-button">Take Tour</button> */}
             </div>
           </div>
         </form>
