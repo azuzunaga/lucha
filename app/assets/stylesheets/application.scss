@@ -66,7 +66,12 @@ $gray: #cccccc;
     display: flex;
     align-items: center;
       li {
-        margin: 0 5px;
+        padding: 5px;
+        border: 3px solid white;
+      }
+
+      li:hover {
+        border-bottom: 3px solid $corporate;
       }
   }
 
