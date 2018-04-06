@@ -68,7 +68,7 @@ class DemoForm extends React.Component {
           <button className="login-form-button" id="demo">
             Demo User
           </button>
-              {/* <button className="tour-button">Take Tour</button> */}
+          {/* <button className="tour-button">Take Tour</button> */}
         </form>
       </div>
     );
