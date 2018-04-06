@@ -153,6 +153,15 @@ html, body {
       margin: 6px 0;
     }
 
+    .login-input:focus {
+      background-color: white;
+      color: black;
+    }
+
+    .login-input:valid:not(:focus) {
+      color: white;
+    }
+
     .session-form-separator {
       font-size: 18px;
       font-weight: 100;
