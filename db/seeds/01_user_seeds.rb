@@ -1,6 +1,7 @@
 User.create([
   { username: 'root', password: 'password', first_name: 'Americo', last_name: 'Zuzunaga' },
   { username: 'ame.zuz@gmail.com', password: 'password', first_name: 'Americo', last_name: 'Zuzunaga' },
+  { username: 'chels', password: 'password', first_name: 'Chelsea', last_name: 'Ellington' },
   { username: 'alberto@cyclist.com', password: 'password', first_name: 'Alberto', last_name: 'Contador' },
   { username: 'sean@cyclist.com', password: 'password', first_name: 'Sean', last_name: 'Kelly' },
   { username: 'gino@cyclist.com', password: 'password', first_name: 'Gino', last_name: 'Bartali' },
