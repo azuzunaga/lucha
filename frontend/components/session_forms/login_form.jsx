@@ -48,27 +48,27 @@ class LoginForm extends React.Component {
         <h2 id="login-title">Log In</h2>
         <form onSubmit={this.handleSubmit} className="login-form-box">
           {this.renderErrors()}
-          <br/>
           <input type="text"
             value={this.state.username}
             onChange={this.update('username')}
             className="login-input"
             placeholder="Your email"
           />
-          <br/>
           <input type="password"
             value={this.state.password}
             onChange={this.update('password')}
             className="login-input"
             placeholder="Password"
           />
-          <br/>
           <input type="submit"
-            className="session-submit"
+            className="login-form-button"
+            value="Log In"
           />
-          <h3 className="session-form-separator">or</h3>
-          <Link className="demo-button" to="/demo">Demo User</Link>
-          {/* <button className="tour-button">Take Tour</button> */}
+          <label className="session-form-separator">or</label>
+          <Link className="login-form-button" to="/demo" id="demo">
+              Demo User
+            </Link>
+            {/* <button className="tour-button">Take Tour</button> */}
         </form>
       </div>
     );
