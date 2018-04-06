@@ -50,6 +50,12 @@ $gray: #cccccc;
   height: 50px;
   align-items: center;
   min-width: 250px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 100;
 
   .left-nav {
     display: flex;
@@ -83,40 +89,52 @@ $gray: #cccccc;
     background-color: gainsboro;
     border-color: darkgrey;
   }
-
-
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    #root {
+      height: 100%;
+      div {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+}
+
+// .bg {
+//     background-image: url("session/00_image.jpg");
+//     height: 100%;
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+// }
 
 
-// .header-content {
-//   display: flex;
-//   border-bottom: 1px solid $sep-gray;
-//   height: 50px;
-//   justify-content: space-around;
-//   min-width: 250px;
-//
-//   div {
-//     font-family: $logo;
-//     font-size: 30px;
-//     color: $corporate;
-//     margin: auto 0;
-//     padding-top: 4px;
-//   }
-// }
-//
-// .login-nav {
-//   border-radius: 5px;
-//   border: 1px solid $border-gray;
-//   font-size: 14px;
-//   font-family: $main-font;
-//   padding: 10px 30px;
-//   margin: auto 0;
-//
-//   a {
-//     text-decoration: none;
-//     color: $corporate;
-//     font-weight: 700;
-//     line-height: 1.5;
-//   }
-// }
+.login-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  #login-title {
+    margin-top: 50px;
+    min-width: 300px;
+    width: 400px;
+    height: 75px;
+    background-color: black;
+    opacity: .85;
+    color: white;
+  }
+
+  .login-form-box {
+    background-color: black;
+    opacity: 0.75;
+    min-width: 300px;
+    height: 60vw;
+    width: 400px;
+  }
+}
