@@ -54,12 +54,14 @@ class DemoForm extends React.Component {
             className="login-input"
             placeholder="Your email"
             id="demo-user"
+            spellCheck="false"
           />
           <input type="password"
             value=""
             className="login-input"
             placeholder="Password"
             id="demo-pass"
+            spellCheck="false"
           />
           <input type="submit"
             className="login-form-submit"
