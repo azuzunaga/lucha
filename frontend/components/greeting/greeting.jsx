@@ -48,6 +48,9 @@ const personalGreeting = (currentUser, logout) => (
             <div className="nav-avatar-chevron">
               <i className="material-icons md-18">keyboard_arrow_down</i>
             </div>
+            <div class="user-dropdown-content">
+              <button className="header-button" onClick={logout}>Log out</button>
+            </div>
           </a>
         </li>
         <li className="nav-icon">
@@ -57,9 +60,6 @@ const personalGreeting = (currentUser, logout) => (
               <i className="material-icons md-24 circle-hidden">add_circle</i>
             </div>
           </a>
-        </li>
-        <li>
-          <button className="header-button" onClick={logout}>Log out</button>
         </li>
       </ul>
     </nav>
