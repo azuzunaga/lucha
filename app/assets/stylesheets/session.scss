@@ -169,6 +169,31 @@
       margin: 20px 0;
     }
 
+    #demo-click {
+      background-color: $lightcorporate;
+      transition: border-color 0.1s linear, background 0.1s linear, color 0.1s linear;
+    }
+
+    #demo-hover {
+      background-color: $darkcorporate;
+      transition: border-color 0.1s linear, background 0.1s linear, color 0.1s linear;
+    }
+
+    #demo-login-button {
+      background-color: $corporate;
+      transition: border-color 0.1s linear, background 0.1s linear, color 0.1s linear;
+    }
+
+    .login-form-button:hover {
+      background-color: $darkcorporate;
+      transition: border-color 0.1s linear, background 0.1s linear, color 0.1s linear;
+    }
+
+    .login-form-button:active {
+      background-color: $lightcorporate;
+    }
+
+
     #demo, #signup, #login {
       vertical-align: middle;
       display: inline-block;
