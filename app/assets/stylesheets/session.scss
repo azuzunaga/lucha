@@ -241,11 +241,13 @@
 
 .login-form-box.signup-form-box {
   height: 450px;
+  min-height: 450px;
 }
 
 .sign-up-button-container {
   display: flex;
   height: 50px;
+  min-height: 50px;
   border-top: 1px solid $darkgray;
   width: 350px;
   justify-content: center;
@@ -253,6 +255,7 @@
 
 .login-form-box.splash-form-box {
   height: 350px;
+  min-height: 350px;
 }
 
 .bg {
@@ -260,11 +263,4 @@
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-.bg2 {
-  background-image: image-url("session/01_image.jpg");
-  width: 100vw;
-  background-size: cover;
-
 }
