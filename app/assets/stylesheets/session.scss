@@ -258,8 +258,57 @@
   min-height: 350px;
 }
 
-.bg {
-  background-image: image-url(nth($backgrounds, $rand));
+.bg00 {
+  background-image: image-url(nth($backgrounds, 1));
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg01 {
+  background-image: image-url(nth($backgrounds, 2));
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg02 {
+  background-image: image-url(nth($backgrounds, 3));
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg03 {
+  background-image: image-url(nth($backgrounds, 4));
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg04 {
+  background-image: image-url(nth($backgrounds, 5));
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg05 {
+  background-image: image-url(nth($backgrounds, 6));
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg06 {
+  background-image: image-url(nth($backgrounds, 7));
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg07 {
+  background-image: image-url(nth($backgrounds, 8));
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
