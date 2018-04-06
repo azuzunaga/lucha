@@ -37,27 +37,24 @@ const personalGreeting = (currentUser, logout) => (
 
     <nav className="right-nav">
       <ul>
-        {/* <li id="user-information">
-        <ul> */}
         <li>
           <h2 className="header-name">Hi, {currentUser.firstName}</h2>
         </li>
-        <li>
+        <li className="nav-icon">
           <a href="" id="user-dropdown-btn">
             <div className="user-nav-avatar">
-              <i class="material-icons md-36">account_circle</i>
+              <i className="material-icons md-36">account_circle</i>
             </div>
             <div className="nav-avatar-chevron">
-              <i class="material-icons md-18">keyboard_arrow_down</i>
+              <i className="material-icons md-18">keyboard_arrow_down</i>
             </div>
           </a>
         </li>
-        {/* </ul>
-        </li> */}
-        <li>
+        <li className="nav-icon">
           <a href="">
             <div>
-              <i class="material-icons md-24">add_circle_outline</i>
+              <i className="material-icons md-24 circle-show">add_circle_outline</i>
+              <i className="material-icons md-24 circle-hidden">add_circle</i>
             </div>
           </a>
         </li>
