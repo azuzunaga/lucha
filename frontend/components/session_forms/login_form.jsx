@@ -45,35 +45,30 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="login-form-container">
+        <h2 id="login-title">Log In</h2>
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Log In
-          <br/>
           {this.renderErrors()}
-          <div className="login-form">
-            <br/>
-            <input type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
-              className="login-input"
-              placeholder="Your email"
-            />
-            <br/>
-            <input type="password"
-              value={this.state.password}
-              onChange={this.update('password')}
-              className="login-input"
-              placeholder="Password"
-            />
-            <br/>
-            <input type="submit"
-              className="session-submit"
-            />
-            <h3 className="session-form-separator">or</h3>
-            <div className = "session-options">
-              <Link className="demo-button" to="/demo">Demo User</Link>
-              {/* <button className="tour-button">Take Tour</button> */}
-            </div>
-          </div>
+          <br/>
+          <input type="text"
+            value={this.state.username}
+            onChange={this.update('username')}
+            className="login-input"
+            placeholder="Your email"
+          />
+          <br/>
+          <input type="password"
+            value={this.state.password}
+            onChange={this.update('password')}
+            className="login-input"
+            placeholder="Password"
+          />
+          <br/>
+          <input type="submit"
+            className="session-submit"
+          />
+          <h3 className="session-form-separator">or</h3>
+          <Link className="demo-button" to="/demo">Demo User</Link>
+          {/* <button className="tour-button">Take Tour</button> */}
         </form>
       </div>
     );
