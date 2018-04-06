@@ -24,11 +24,6 @@ $main-font: -apple-system, system-ui, BlinkMacSystemFont, Roboto, "Segoe UI", "H
 $corporate: #005260;
 $gray: #cccccc;
 
-#user-dropdown-btn {
-  display: flex;
-  align-items: center;
-}
-
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
@@ -39,6 +34,7 @@ $gray: #cccccc;
   font-family: $logo;
   font-size: 30px;
   padding-top: 4px;
+  margin-right: 15px;
 }
 
 .header-nav {
@@ -68,10 +64,49 @@ $gray: #cccccc;
 
   .left-nav > ul {
     display: flex;
+    align-items: center;
+      li {
+        margin: 0 5px;
+      }
   }
 
   .right-nav > ul {
     display: flex;
+    align-items: center;
+      li {
+        padding: 0 5px;
+        a {
+          height: 50px;
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .nav-icon {
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+
+        .circle-show {
+          display: inline;
+        }
+        .circle-hidden {
+          display: none;
+        }
+      }
+
+      .nav-icon:hover {
+        color: $corporate;
+        border-left: 1px solid $gray;
+        border-right: 1px solid $gray;
+        border-bottom: 1px solid white;
+
+        .circle-show {
+          display: none;
+        }
+        .circle-hidden {
+          display: inline-block;
+        }
+      }
   }
 
   #splash-login-button {
