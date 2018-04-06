@@ -40,29 +40,29 @@ const personalGreeting = (currentUser, logout, addActivity, createRoute) => (
         <li>
           <h2 className="header-name">Hi, {currentUser.firstName}</h2>
         </li>
-        <li className="nav-icon user-dropdown-container">
-          <a href="" id="user-dropdown-btn">
+        <li className="nav-icon dropdown-container">
+          <a href="" id="dropdown-btn">
             <div className="user-nav-avatar">
-              <i className="material-icons md-36">account_circle</i>
+              <i className="small-profile-pic"></i>
             </div>
             <div className="nav-avatar-chevron">
               <i className="material-icons md-18">keyboard_arrow_down</i>
             </div>
           </a>
-          <ul className="user-dropdown-content">
+          <ul className="dropdown-content">
             <li>
               <button className="header-button" onClick={logout}>Log out</button>
             </li>
           </ul>
         </li>
-        <li className="nav-icon user-dropdown-container">
+        <li className="nav-icon dropdown-container">
           <a href="">
             <div>
               <i className="material-icons md-24 circle-show">add_circle_outline</i>
               <i className="material-icons md-24 circle-hidden">add_circle</i>
             </div>
           </a>
-          <ul className="user-dropdown-content">
+          <ul className="dropdown-content">
             <li>
               <button className="header-button" onClick={addActivity}>Add new activity</button>
             </li>

@@ -58,6 +58,15 @@
         }
       }
 
+      .small-profile-pic {
+        padding: 20px;
+        background-image: image-url("users/user_02.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 50%;
+      }
+
       .nav-icon {
         border-left: 1px solid white;
         border-right: 1px solid white;
@@ -84,11 +93,11 @@
         }
       }
 
-      .user-dropdown-container {
+      .dropdown-container {
         position: relative;
         display: inline-block;
 
-        .user-dropdown-content {
+        .dropdown-content {
           display: none;
           position: absolute;
           top: 100%;
@@ -107,13 +116,13 @@
         }
       }
 
-      .user-dropdown-container:hover {
-        .user-dropdown-content{
+      .dropdown-container:hover {
+        .dropdown-content{
           display: block;
         }
       }
 
-      .user-dropdown-content:hover{
+      .dropdown-content:hover{
         li:hover {
           background-color: $gray;
           color: $corporate;
@@ -312,4 +321,5 @@
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
