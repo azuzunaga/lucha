@@ -46,34 +46,31 @@ class DemoForm extends React.Component {
   render() {
     return (
       <div className="login-form-container">
+        <h2 id="login-title">Log In</h2>
         <form className="login-form-box">
-          Log In
-          <br/>
-          <div className="login-form">
-            <br/>
-            <input type="text"
-              value=""
-              className="login-input"
-              placeholder="Your email"
-              id="demo-user"
-              readOnly
-            />
-            <br/>
-            <input type="password"
-              value=""
-              className="login-input"
-              placeholder="Password"
-              id="demo-pass"
-              readOnly
-            />
-            <br/>
-            <input type="submit" className="session-submit" id="demo-submit"/>
-            <h3 className="session-form-separator">or</h3>
-            <div className = "session-options">
-              <button className="demo-button">Demo User</button>
+          <input type="text"
+            value=""
+            className="login-input"
+            placeholder="Your email"
+            id="demo-user"
+            readOnly
+          />
+          <input type="password"
+            value=""
+            className="login-input"
+            placeholder="Password"
+            id="demo-pass"
+            readOnly
+          />
+          <input type="submit"
+            className="login-form-submit"
+            value="Log In"
+          />
+          <label className="session-form-separator">or</label>
+          <button className="login-form-button" id="demo">
+            Demo User
+          </button>
               {/* <button className="tour-button">Take Tour</button> */}
-            </div>
-          </div>
         </form>
       </div>
     );
