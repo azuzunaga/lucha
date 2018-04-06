@@ -13,9 +13,6 @@ class DemoForm extends React.Component {
   }
 
   componentDidMount() {
-    // this.typeWriter(0, "demo-user", this.state.username);
-    // this.typeWriter(0, "demo-pass", this.state.password);
-
     setTimeout(
       this.typeWriter, 400,
       0, "demo-user", this.state.username
