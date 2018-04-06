@@ -44,39 +44,41 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <h2 id="login-title">Log In</h2>
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          {this.renderErrors()}
-          <input type="text"
-            value={this.state.username}
-            onChange={this.update('username')}
-            className="login-input"
-            placeholder="Your email"
-            spellCheck="false"
-          />
-          <input type="password"
-            value={this.state.password}
-            onChange={this.update('password')}
-            className="login-input"
-            placeholder="Password"
-            spellCheck="false"
-          />
-          <input type="submit"
-            className="login-form-button"
-            value="Log In"
-          />
-          <label className="session-form-separator">or</label>
-          <Link className="login-form-button" to="/demo" id="demo">
-            Demo User
-          </Link>
-          <span className="sign-up-button-container">
-            <Link className="login-form-button" to="/signup" id="signup">
-              Sign Up
+      <div className="bg">
+        <div className="login-form-container">
+          <h2 id="login-title">Log In</h2>
+          <form onSubmit={this.handleSubmit} className="login-form-box">
+            {this.renderErrors()}
+            <input type="text"
+              value={this.state.username}
+              onChange={this.update('username')}
+              className="login-input"
+              placeholder="Your email"
+              spellCheck="false"
+            />
+            <input type="password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              className="login-input"
+              placeholder="Password"
+              spellCheck="false"
+            />
+            <input type="submit"
+              className="login-form-button"
+              value="Log In"
+            />
+            <label className="session-form-separator">or</label>
+            <Link className="login-form-button" to="/demo" id="demo">
+              Demo User
             </Link>
-          </span>
-          {/* <button className="tour-button">Take Tour</button> */}
-        </form>
+            <span className="sign-up-button-container">
+              <Link className="login-form-button" to="/signup" id="signup">
+                Sign Up
+              </Link>
+            </span>
+            {/* <button className="tour-button">Take Tour</button> */}
+          </form>
+        </div>
       </div>
     );
   }
