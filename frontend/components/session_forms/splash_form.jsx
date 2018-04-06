@@ -2,10 +2,13 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 class SplashForm extends React.Component {
+
+
   render() {
     return (
-      <div className="bg">
+      <div className="bg01">
         <div className="login-form-container splash-form-container">
+          <h2 id="login-title">Track your activities with Lucha</h2>
           <form className="login-form-box splash-form-box">
             <Link className="login-form-button" to="/login" id="login">
               Log In

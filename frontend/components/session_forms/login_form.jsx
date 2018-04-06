@@ -44,7 +44,7 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="bg">
+      <div className="bg03 ">
         <div className="login-form-container">
           <h2 id="login-title">Log In</h2>
           <form onSubmit={this.handleSubmit} className="login-form-box">
