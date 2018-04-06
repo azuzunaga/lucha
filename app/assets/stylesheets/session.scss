@@ -83,6 +83,42 @@
           display: inline-block;
         }
       }
+
+      .user-dropdown-container {
+        position: relative;
+        display: inline-block;
+
+        .user-dropdown-content {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: -1px;
+          margin: 0;
+          font-size: 16px;
+          color: $darkgray;
+          border-bottom: 1px solid $gray;
+          border-left: 1px solid $gray;
+          border-right: 1px solid $gray;
+          button {
+            display: block;
+            padding: 15px 10px;
+            width: 150px;
+          }
+        }
+      }
+
+      .user-dropdown-container:hover {
+        .user-dropdown-content{
+          display: block;
+        }
+
+        .user-dropdown-content:hover{
+          li {
+            background-color: $gray;
+            color: $corporate;
+          }
+        }
+      }
   }
 
   #splash-login-button {
