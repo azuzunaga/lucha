@@ -57,39 +57,41 @@ class DemoForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <h2 id="login-title">Log In</h2>
-        <form className="login-form-box">
-          <input type="text"
-            value=""
-            className="login-input"
-            placeholder="Your email"
-            id="demo-user"
-            spellCheck="false"
-          />
-          <input type="password"
-            value=""
-            className="login-input"
-            placeholder="Password"
-            id="demo-pass"
-            spellCheck="false"
-          />
-          <input type="submit"
-            className="login-form-button"
-            value="Log In"
-            id="demo-login-button"
-          />
-          <label className="session-form-separator">or</label>
-          <Link className="login-form-button" to="" id="demo">
-            Demo User
-          </Link>
-          <span className="sign-up-button-container">
-            <Link className="login-form-button" to="" id="signup">
-              Sign Up
+      <div className="bg">
+        <div className="login-form-container">
+          <h2 id="login-title">Log In</h2>
+          <form className="login-form-box">
+            <input type="text"
+              value=""
+              className="login-input"
+              placeholder="Your email"
+              id="demo-user"
+              spellCheck="false"
+            />
+            <input type="password"
+              value=""
+              className="login-input"
+              placeholder="Password"
+              id="demo-pass"
+              spellCheck="false"
+            />
+            <input type="submit"
+              className="login-form-button"
+              value="Log In"
+              id="demo-login-button"
+            />
+            <label className="session-form-separator">or</label>
+            <Link className="login-form-button" to="" id="demo">
+              Demo User
             </Link>
-          </span>
-          {/* <button className="tour-button">Take Tour</button> */}
-        </form>
+            <span className="sign-up-button-container">
+              <Link className="login-form-button" to="" id="signup">
+                Sign Up
+              </Link>
+            </span>
+            {/* <button className="tour-button">Take Tour</button> */}
+          </form>
+        </div>
       </div>
     );
   }
