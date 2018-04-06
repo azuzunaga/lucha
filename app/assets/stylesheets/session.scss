@@ -111,12 +111,12 @@
         .user-dropdown-content{
           display: block;
         }
+      }
 
-        .user-dropdown-content:hover{
-          li {
-            background-color: $gray;
-            color: $corporate;
-          }
+      .user-dropdown-content:hover{
+        li:hover {
+          background-color: $gray;
+          color: $corporate;
         }
       }
   }
@@ -253,4 +253,18 @@
 
 .login-form-box.splash-form-box {
   height: 350px;
+}
+
+.bg {
+  background-image: image-url("session/00_image.jpg");
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg2 {
+  background-image: image-url("session/01_image.jpg");
+  width: 100vw;
+  background-size: cover;
+
 }
