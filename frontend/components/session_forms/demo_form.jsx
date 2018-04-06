@@ -32,6 +32,7 @@ class DemoForm extends React.Component {
 
   typeWriter(j, field, text) {
     if (j < text.length) {
+      document.getElementById(field).focus();
       document.getElementById(field).value += text.charAt(j);
       j = j + 1;
       setTimeout(this.typeWriter, 75, j, field, text);
@@ -53,14 +54,12 @@ class DemoForm extends React.Component {
             className="login-input"
             placeholder="Your email"
             id="demo-user"
-            readOnly
           />
           <input type="password"
             value=""
             className="login-input"
             placeholder="Password"
             id="demo-pass"
-            readOnly
           />
           <input type="submit"
             className="login-form-submit"
