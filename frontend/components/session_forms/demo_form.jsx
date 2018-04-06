@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class DemoForm extends React.Component {
   constructor(props) {
@@ -13,6 +13,8 @@ class DemoForm extends React.Component {
   }
 
   componentDidMount() {
+    let button = document.getElementById("demo-login-button");
+
     setTimeout(
       this.typeWriter, 400,
       0, "demo-user", this.state.username
@@ -23,7 +25,19 @@ class DemoForm extends React.Component {
       0, "demo-pass", this.state.password
     );
 
-    setTimeout(this.handleSubmit, 3075);
+    setTimeout(function() {
+      button.setAttribute("id", "demo-hover");
+    }, 3075);
+
+    setTimeout(function() {
+      button.setAttribute("id", "demo-click");
+    }, 3275);
+
+    setTimeout(function() {
+      button.setAttribute("id", "demo-login-button");
+    }, 3375);
+
+    setTimeout(this.handleSubmit, 3475);
   }
 
 
@@ -61,13 +75,19 @@ class DemoForm extends React.Component {
             spellCheck="false"
           />
           <input type="submit"
-            className="login-form-submit"
+            className="login-form-button"
             value="Log In"
+            id="demo-login-button"
           />
           <label className="session-form-separator">or</label>
-          <button className="login-form-button" id="demo">
+          <Link className="login-form-button" to="" id="demo">
             Demo User
-          </button>
+          </Link>
+          <span className="sign-up-button-container">
+            <Link className="login-form-button" to="" id="signup">
+              Sign Up
+            </Link>
+          </span>
           {/* <button className="tour-button">Take Tour</button> */}
         </form>
       </div>
