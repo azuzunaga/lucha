@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Typist from 'react-typist';
 
 class DemoForm extends React.Component {
   constructor(props) {
