@@ -17,3 +17,15 @@ $darkgray: #666666;
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
+
+// Background images
+$backgrounds: "session/00_image.jpg"
+              "session/01_image.jpg"
+              "session/02_image.jpg"
+              "session/03_image.jpg"
+              "session/04_image.jpg"
+              "session/05_image.jpg"
+              "session/06_image.jpg"
+              "session/07_image.jpg";
+
+$rand: random(8)

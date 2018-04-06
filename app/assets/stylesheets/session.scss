@@ -256,7 +256,7 @@
 }
 
 .bg {
-  background-image: image-url("session/00_image.jpg");
+  background-image: image-url(nth($backgrounds, $rand));
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
