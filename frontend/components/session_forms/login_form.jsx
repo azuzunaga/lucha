@@ -68,9 +68,14 @@ class LoginForm extends React.Component {
           />
           <label className="session-form-separator">or</label>
           <Link className="login-form-button" to="/demo" id="demo">
-              Demo User
+            Demo User
+          </Link>
+          <span className="sign-up-button-container">
+            <Link className="login-form-button" to="/signup" id="signup">
+              Sign Up
             </Link>
-            {/* <button className="tour-button">Take Tour</button> */}
+          </span>
+          {/* <button className="tour-button">Take Tour</button> */}
         </form>
       </div>
     );
