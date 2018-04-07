@@ -1,0 +1,12 @@
+@import "variables";
+
+.map {
+  width: 100vw;
+  height: 100vh;
+  float: left;
+  position: relative;
+
+  div {
+    height: 1px;
+  }
+}
