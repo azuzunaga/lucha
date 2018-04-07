@@ -100,7 +100,7 @@
         .dropdown-content {
           display: none;
           position: absolute;
-          top: 100%;
+          top: 51px;
           right: -1px;
           margin: 0;
           font-size: 16px;
@@ -108,6 +108,7 @@
           border-bottom: 1px solid $gray;
           border-left: 1px solid $gray;
           border-right: 1px solid $gray;
+          background-color: white;
           button {
             display: block;
             padding: 15px 10px;
@@ -297,6 +298,8 @@
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: $lightercorporate;
+
 }
 
 .bg02 {
@@ -304,6 +307,7 @@
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: $lightercorporate;
 }
 
 .bg03 {
@@ -311,6 +315,8 @@
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: $lightercorporate;
+
 }
 
 .bg04 {
@@ -325,6 +331,8 @@
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: $lightercorporate;
+
 }
 
 .bg06 {
