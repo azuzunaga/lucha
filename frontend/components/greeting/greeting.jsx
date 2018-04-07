@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const sessionLinks = () => (
     <nav className="header-nav">
@@ -64,10 +64,10 @@ const personalGreeting = (currentUser, logout, addActivity, createRoute) => (
           </a>
           <ul className="dropdown-content">
             <li>
-              <button className="header-button" onClick={addActivity}>Add new activity</button>
+              <a className="header-button" href="#/activities/new">Add new activity</a>
             </li>
             <li>
-              <button className="header-button" onClick={createRoute}>Create a route</button>
+              <a className="header-button" href="#/routes/new">Create a route</a>
             </li>
           </ul>
         </li>
