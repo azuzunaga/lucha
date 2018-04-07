@@ -13,6 +13,10 @@ const receiveSessionErrors = errors => ({
   errors,
 });
 
+export const clearErrors = () => dispatch => (
+  dispatch(receiveSessionErrors([]))
+);
+
 export const login = user => dispatch => (
   SessionAPIUtil.login(user).then(user => (
     dispatch(receiveCurrentUser(user))

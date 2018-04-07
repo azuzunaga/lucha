@@ -13,6 +13,10 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -25,11 +29,11 @@ class SignupForm extends React.Component {
     this.props.processForm(user);
   }
 
-  renderErrors(i) {
+  renderErrors(field) {
     return(
-        <h2 key={`error-${i}`} className="signup-errors">
-          {this.props.errors[i]}
-        </h2>
+        <nav key={`error-${field}`} className="signup-errors">
+          {this.props.errors.find(el => (el.includes(field)))}
+        </nav>
     );
   }
 
@@ -38,7 +42,6 @@ class SignupForm extends React.Component {
       <div className="bg05">
         <div className="signup-form-container login-form-container">
           <h2 id="login-title">Sign Up</h2>
-          {/* <h2 id="session-errors">{this.renderErrors()}</h2> */}
           <form onSubmit={this.handleSubmit} className="signup-form-box login-form-box">
             <input type="text"
               value={this.state.username}
@@ -46,7 +49,7 @@ class SignupForm extends React.Component {
               className="signup-input login-input"
               placeholder="Your email"
             />
-            {this.renderErrors(0)}
+            {this.renderErrors("Username")}
 
             <input type="password"
               value={this.state.password}
@@ -54,7 +57,7 @@ class SignupForm extends React.Component {
               className="signup-input login-input"
               placeholder="Password"
             />
-            <h2>{this.renderErrors(3)}</h2>
+            {this.renderErrors("Password")}
 
             <input type="text"
               value={this.state.first_name}
@@ -62,7 +65,7 @@ class SignupForm extends React.Component {
               className="signup-input login-input"
               placeholder="First Name"
             />
-            <h2>{this.renderErrors(1)}</h2>
+            {this.renderErrors("First")}
 
             <input type="text"
               value={this.state.last_name}
@@ -70,7 +73,7 @@ class SignupForm extends React.Component {
               className="signup-input login-input"
               placeholder="Last Name"
             />
-            <h2>{this.renderErrors(2)}</h2>
+            {this.renderErrors("Last")}
 
             <input type="submit"
               className="session-form-button login-form-button"
