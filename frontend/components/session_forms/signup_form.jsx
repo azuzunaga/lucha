@@ -25,15 +25,11 @@ class SignupForm extends React.Component {
     this.props.processForm(user);
   }
 
-  renderErrors() {
+  renderErrors(i) {
     return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
+        <h2 key={`error-${i}`} className="signup-errors">
+          {this.props.errors[i]}
+        </h2>
     );
   }
 
@@ -42,33 +38,40 @@ class SignupForm extends React.Component {
       <div className="bg05">
         <div className="signup-form-container login-form-container">
           <h2 id="login-title">Sign Up</h2>
+          {/* <h2 id="session-errors">{this.renderErrors()}</h2> */}
           <form onSubmit={this.handleSubmit} className="signup-form-box login-form-box">
-            {this.renderErrors()}
-
             <input type="text"
               value={this.state.username}
               onChange={this.update('username')}
               className="signup-input login-input"
               placeholder="Your email"
             />
+            {this.renderErrors(0)}
+
             <input type="password"
               value={this.state.password}
               onChange={this.update('password')}
               className="signup-input login-input"
               placeholder="Password"
             />
+            <h2>{this.renderErrors(3)}</h2>
+
             <input type="text"
               value={this.state.first_name}
               onChange={this.update('first_name')}
               className="signup-input login-input"
               placeholder="First Name"
             />
+            <h2>{this.renderErrors(1)}</h2>
+
             <input type="text"
               value={this.state.last_name}
               onChange={this.update('last_name')}
               className="signup-input login-input"
               placeholder="Last Name"
             />
+            <h2>{this.renderErrors(2)}</h2>
+
             <input type="submit"
               className="session-form-button login-form-button"
             />
