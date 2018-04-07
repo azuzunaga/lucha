@@ -57,7 +57,7 @@ class DemoForm extends React.Component {
 
   render() {
     return (
-      <div className="bg02">
+      <div className="bg02 bg">
         <div className="login-form-container">
           <h2 id="login-title">Log In</h2>
           <form className="login-form-box">

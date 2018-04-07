@@ -6,7 +6,7 @@ class SplashForm extends React.Component {
 
   render() {
     return (
-      <div className="bg01">
+      <div className="bg01 bg">
         <div className="login-form-container splash-form-container">
           <h2 id="login-title">Track your activities with Lucha</h2>
           <form className="login-form-box splash-form-box">

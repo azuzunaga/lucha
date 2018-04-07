@@ -48,7 +48,7 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="bg03 ">
+      <div className="bg03 bg">
         <div className="login-form-container">
           <h2 id="login-title">Log In</h2>
           <h2 id="session-errors">{this.renderErrors()}</h2>
