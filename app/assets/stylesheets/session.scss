@@ -59,7 +59,7 @@
       }
 
       .small-profile-pic {
-        padding: 20px;
+        padding: 10px 20px;
         background-image: image-url("users/user_02.jpeg");
         background-size: cover;
         background-repeat: no-repeat;
@@ -70,6 +70,7 @@
       .nav-icon {
         border-left: 1px solid white;
         border-right: 1px solid white;
+        border-bottom: 1px solid $gray;
 
         .circle-show {
           display: inline;
@@ -109,10 +110,13 @@
           border-left: 1px solid $gray;
           border-right: 1px solid $gray;
           background-color: white;
-          button {
+          .header-button {
             display: block;
             padding: 15px 10px;
             width: 150px;
+          }
+          a {
+            height: 20px;
           }
         }
       }
@@ -284,6 +288,13 @@
 .login-form-box.splash-form-box {
   height: 350px;
   min-height: 350px;
+}
+
+.bg {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .bg00 {

@@ -21,7 +21,7 @@ html, body {
     font-family: $main-font;
     #root {
       height: 100%;
-      div {
+      #app {
         height: 100%;
         display: flex;
         justify-content: center;
