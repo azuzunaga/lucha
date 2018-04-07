@@ -47,8 +47,8 @@ class LoginForm extends React.Component {
       <div className="bg03 ">
         <div className="login-form-container">
           <h2 id="login-title">Log In</h2>
+          <h2 id="session-errors">{this.renderErrors()}</h2>
           <form onSubmit={this.handleSubmit} className="login-form-box">
-            {this.renderErrors()}
             <input type="text"
               value={this.state.username}
               onChange={this.update('username')}
