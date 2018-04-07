@@ -165,6 +165,18 @@
     font-size: 30px;
   }
 
+  #session-errors {
+    min-width: 300px;
+    width: 400px;
+    // height: 75px;
+    background-color: $red;
+    color: white;
+    font-weight: 100;
+    text-align: center;
+    line-height: 75px;
+    font-size: 12px;
+  }
+
   .login-form-box {
     display: flex;
     background-color: rgba(0, 0, 0, .75);
@@ -251,6 +263,12 @@
 .login-form-box.signup-form-box {
   height: 450px;
   min-height: 450px;
+}
+
+.signup-errors {
+  font-size: 12px;
+  color: $red;
+  font-weight: 100;
 }
 
 .sign-up-button-container {
