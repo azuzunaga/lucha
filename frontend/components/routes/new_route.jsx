@@ -8,6 +8,20 @@ const mapOptions = {
   streetViewControl: false
 };
 
+const polylineOptions = {
+  strokeColor: "#005260",
+  strokeWeight: 8,
+  strokeOpacity: 0.5
+};
+
+const rendererOptions = {
+  suppressMarkers: true,
+  suppressBicyclingLayer: true,
+  preserveViewport: true,
+  polylineOptions: polylineOptions,
+};
+
+
 class NewRoute extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +44,7 @@ class NewRoute extends React.Component {
     this.map = new google.maps.Map(map, mapOptions);
 
     this.directionsService = new google.maps.DirectionsService;
-    this.directionsDisplay = new google.maps.DirectionsRenderer;
+    this.directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
     this.directionsDisplay.setMap(this.map);
 
     this.map.addListener('click', this.handleClick.bind(this));
@@ -40,16 +54,14 @@ class NewRoute extends React.Component {
 
   handleClick(e) {
     console.log("Lat:", e.latLng.lat(), "Long:", e.latLng.lng());
-    this.coordinates = this.coordinates.slice(0, this.coordIndex);
 
+
+    this.coordinates = this.coordinates.slice(0, this.coordIndex);
 
     this.coordinates.push({
       location: {lat: e.latLng.lat(), lng: e.latLng.lng()},
-      stopover: true
     });
     this.coordIndex += 1;
-
-    console.log('Coordinates:', this.coordinates, "coordIndex:", this.coordIndex);
 
     if (this.coordinates.length > 1) {
       this.calculateAndDisplayRoute();
@@ -71,8 +83,6 @@ class NewRoute extends React.Component {
     }, function(response, status) {
       if (status === 'OK') {
         const polyLine = response.routes[0].overview_polyline;
-
-        me.directionsDisplay.setOptions({ preserveViewport: true });
         me.directionsDisplay.setDirections(response);
         // console.log('New polyline:', polyLine);
       } else {
