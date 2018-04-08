@@ -5,7 +5,6 @@ import { withRouter, Link } from 'react-router-dom';
 const mapOptions = {
   zoom: 14,
   center: {lat: 41.441, lng: -72.777},
-  mapTypeId: 'terrain',
   streetViewControl: false
 };
 
@@ -15,7 +14,8 @@ class NewRoute extends React.Component {
     this.state = {
       searchInput: "Wallingford, Connecticut"
     };
-
+    this.coordinates = [];
+    this.coordIndex = 0;
     this.geocoder = new google.maps.Geocoder();
   }
 
@@ -33,8 +33,6 @@ class NewRoute extends React.Component {
     this.directionsDisplay = new google.maps.DirectionsRenderer;
     this.directionsDisplay.setMap(this.map);
 
-    this.coordinates = [];
-
     this.map.addListener('click', this.handleClick.bind(this));
 
     const centerControlDiv = document.getElementById("center-control-div");
@@ -42,11 +40,16 @@ class NewRoute extends React.Component {
 
   handleClick(e) {
     console.log("Lat:", e.latLng.lat(), "Long:", e.latLng.lng());
+    this.coordinates = this.coordinates.slice(0, this.coordIndex);
+
 
     this.coordinates.push({
       location: {lat: e.latLng.lat(), lng: e.latLng.lng()},
       stopover: true
     });
+    this.coordIndex += 1;
+
+    console.log('Coordinates:', this.coordinates, "coordIndex:", this.coordIndex);
 
     if (this.coordinates.length > 1) {
       this.calculateAndDisplayRoute();
@@ -54,12 +57,16 @@ class NewRoute extends React.Component {
   }
 
   calculateAndDisplayRoute () {
-    const lastCoord = this.coordinates.length - 1;
+    this.newCoordinates = this.coordinates.slice(0, this.coordIndex);
+    console.log("Coordinates:", this.coordinates, "newCoords:", this.newCoordinates,"coordIndex:", this.coordIndex);
+
+
+    const lastCoord = this.newCoordinates.length - 1;
     const me = this;
     this.directionsService.route({
-      origin: this.coordinates[0].location,
-      waypoints: this.coordinates.slice(1, lastCoord),
-      destination: this.coordinates[lastCoord].location,
+      origin: this.newCoordinates[0].location,
+      waypoints: this.newCoordinates.slice(1, lastCoord),
+      destination: this.newCoordinates[lastCoord].location,
       travelMode: 'BICYCLING'
     }, function(response, status) {
       if (status === 'OK') {
@@ -67,7 +74,7 @@ class NewRoute extends React.Component {
 
         me.directionsDisplay.setOptions({ preserveViewport: true });
         me.directionsDisplay.setDirections(response);
-        console.log('New polyline:', polyLine);
+        // console.log('New polyline:', polyLine);
       } else {
         window.alert('Directions request failed due to ' + status);
       }
@@ -82,6 +89,25 @@ class NewRoute extends React.Component {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
+  }
+
+  coordAction(actionType) {
+    switch (actionType) {
+      case "Undo":
+        this.coordIndex -= 1;
+        break;
+      case "Redo":
+        this.coordIndex += 1;
+        break;
+      case "Clear":
+        this.coordinates = [];
+        this.coordIndex = 0;
+        this.directionsDisplay.set('directions', null);
+        break;
+    }
+    if (this.coordinates.length > 1) {
+      this.calculateAndDisplayRoute();
+    }
   }
 
   render() {
@@ -101,21 +127,49 @@ class NewRoute extends React.Component {
 
         </nav>
         <nav className="route-builder-controls">
-          <form className="route-search-form">
-            <input type="text"
-              value={this.state.searchInput}
-              onChange={this.update('searchInput')}
-              className="route-search-form-input"
-              id="route-search-form-input"
-            />
-            <button value="submit"
-              onClick={this.changeOrigin.bind(this)}
-              className="route-search-form-submit"
-            >
-              <i className="material-icons">search</i>
-            </button>
-          </form>
+          <nav className="left-controls">
+            <form className="route-search-form">
+              <input type="text"
+                value={this.state.searchInput}
+                onChange={this.update('searchInput')}
+                className="route-search-form-input"
+                id="route-search-form-input"
+              />
+              <button value="submit"
+                onClick={this.changeOrigin.bind(this)}
+                className="route-search-form-submit"
+              >
+                <i className="material-icons">search</i>
+              </button>
+            </form>
 
+            <section className="route-creation-controls">
+              <a
+                className="route-creation-individual-control"
+                onClick={this.coordAction.bind(this, "Undo")}
+              >
+                <i className="material-icons md-30">undo</i>
+                <label>Undo</label>
+              </a>
+              <a
+                className="route-creation-individual-control"
+                onClick={this.coordAction.bind(this, "Redo")}
+              >
+                <i className="material-icons md-30">redo</i>
+                <label>Redo</label>
+              </a>
+              <a
+                className="route-creation-individual-control"
+                onClick={this.coordAction.bind(this, "Clear")}
+              >
+                <i className="material-icons md-30">clear</i>
+                <label>Clear</label>
+              </a>
+            </section>
+          </nav>
+          <nav className="right-controls">
+
+          </nav>
         </nav>
         <div className="map-container">
           <div className="map" ref="map">
