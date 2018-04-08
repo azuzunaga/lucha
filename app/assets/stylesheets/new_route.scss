@@ -20,9 +20,13 @@
     z-index: 101;
     padding: 0 3vw;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
     align-items: center;
+
+    .right-controls {
+      
+    }
 
     .left-controls {
       display: flex;
@@ -56,6 +60,7 @@
 
       .route-creation-controls {
         display: flex;
+        padding-right: 50px;
         .route-creation-individual-control {
           display: flex;
           flex-direction: column;
@@ -83,6 +88,7 @@
           }
         }
       }
+
     }
   }
 }

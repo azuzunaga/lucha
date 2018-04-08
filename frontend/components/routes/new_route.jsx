@@ -14,11 +14,20 @@ const polylineOptions = {
   strokeOpacity: 0.5
 };
 
+const icon = {
+  url: "https://cdn2.iconfinder.com/data/icons/font-awesome/1792/circle-o-16.png",
+  anchor: new google.maps.Point(10, 10)
+};
+
 const rendererOptions = {
-  suppressMarkers: true,
+  // suppressMarkers: true,
   suppressBicyclingLayer: true,
   preserveViewport: true,
+  // draggable: true,
   polylineOptions: polylineOptions,
+  markerOptions: {
+    icon: icon
+  }
 };
 
 
@@ -26,11 +35,12 @@ class NewRoute extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchInput: "Wallingford, Connecticut"
+      searchInput: ""
     };
     this.coordinates = [];
     this.coordIndex = 0;
     this.geocoder = new google.maps.Geocoder();
+    this.travelMode = "BICYCLING";
   }
 
   update(field) {
@@ -55,36 +65,44 @@ class NewRoute extends React.Component {
   handleClick(e) {
     console.log("Lat:", e.latLng.lat(), "Long:", e.latLng.lng());
 
-
     this.coordinates = this.coordinates.slice(0, this.coordIndex);
 
     this.coordinates.push({
       location: {lat: e.latLng.lat(), lng: e.latLng.lng()},
     });
+
     this.coordIndex += 1;
 
     if (this.coordinates.length > 1) {
       this.calculateAndDisplayRoute();
+    } else {
+      this.marker = new google.maps.Marker({
+        position: this.coordinates[0].location,
+        map: this.map,
+        icon: icon,
+      });
+      this.marker.setMap(this.map);
+
     }
   }
 
   calculateAndDisplayRoute () {
-    this.newCoordinates = this.coordinates.slice(0, this.coordIndex);
-    console.log("Coordinates:", this.coordinates, "newCoords:", this.newCoordinates,"coordIndex:", this.coordIndex);
+    this.marker.setMap(null);
 
+    const newCoordinates = this.coordinates.slice(0, this.coordIndex);
 
-    const lastCoord = this.newCoordinates.length - 1;
-    const me = this;
+    const lastCoord = newCoordinates.length - 1;
     this.directionsService.route({
-      origin: this.newCoordinates[0].location,
-      waypoints: this.newCoordinates.slice(1, lastCoord),
-      destination: this.newCoordinates[lastCoord].location,
-      travelMode: 'BICYCLING'
-    }, function(response, status) {
+      origin: newCoordinates[0].location,
+      waypoints: newCoordinates.slice(1, lastCoord),
+      destination: newCoordinates[lastCoord].location,
+      travelMode: this.travelMode
+    }, (response, status) => {
       if (status === 'OK') {
         const polyLine = response.routes[0].overview_polyline;
-        me.directionsDisplay.setDirections(response);
+        this.directionsDisplay.setDirections(response);
         // console.log('New polyline:', polyLine);
+        console.log('Response:', response);
       } else {
         window.alert('Directions request failed due to ' + status);
       }
@@ -101,18 +119,26 @@ class NewRoute extends React.Component {
     });
   }
 
+  clearAll() {
+    this.coordinates = [];
+    this.coordIndex = 0;
+    this.directionsDisplay.set('directions', null);
+  }
+
   coordAction(actionType) {
     switch (actionType) {
       case "Undo":
+      if (this.coordIndex > 1) {
         this.coordIndex -= 1;
+      }
         break;
       case "Redo":
+      if (this.coordIndex < this.coordinates.length) {
         this.coordIndex += 1;
+      }
         break;
       case "Clear":
-        this.coordinates = [];
-        this.coordIndex = 0;
-        this.directionsDisplay.set('directions', null);
+        this.clearAll();
         break;
     }
     if (this.coordinates.length > 1) {
@@ -144,6 +170,7 @@ class NewRoute extends React.Component {
                 onChange={this.update('searchInput')}
                 className="route-search-form-input"
                 id="route-search-form-input"
+                placeholder="Wallingford, Connecticut"
               />
               <button value="submit"
                 onClick={this.changeOrigin.bind(this)}
@@ -176,9 +203,30 @@ class NewRoute extends React.Component {
                 <label>Clear</label>
               </a>
             </section>
+
+            <section className="activity-type-controls route-creation-controls">
+              <a
+                className="route-creation-individual-control"
+                // onClick={}
+              >
+                <i className="material-icons md-30">directions_bike</i>
+                <label>Ride</label>
+              </a>
+              <a
+                className="route-creation-individual-control"
+                // onClick={}
+              >
+                <i className="material-icons md-30">directions_run</i>
+                <label>Run</label>
+              </a>
+            </section>
           </nav>
           <nav className="right-controls">
-
+            <button
+              className="action-button route-builder-button"
+            >
+              Save
+            </button>
           </nav>
         </nav>
         <div className="map-container">
