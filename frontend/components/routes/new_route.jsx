@@ -78,7 +78,6 @@ class NewRoute extends React.Component {
       this.saveButton.setAttribute("id", "");
 
     } else {
-      this.saveButton.setAttribute("id", "no-directions-button");
       this.marker = new google.maps.Marker({
         position: this.coordinates[0].location,
         map: this.map,
