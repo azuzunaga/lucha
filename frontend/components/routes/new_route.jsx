@@ -23,7 +23,8 @@ const rendererOptions = {
   // suppressMarkers: true,
   suppressBicyclingLayer: true,
   preserveViewport: true,
-  // draggable: true,
+  // draggable: true
+  // ^ implement later, get new coordinates from renderer result?
   polylineOptions: polylineOptions,
   markerOptions: {
     icon: icon
@@ -35,7 +36,7 @@ class NewRoute extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchInput: ""
+      searchInput: "Wallingford, Connecticut"
     };
     this.coordinates = [];
     this.coordIndex = 0;
@@ -154,6 +155,24 @@ class NewRoute extends React.Component {
     }
   }
 
+  selectTravelMode(mode) {
+    this.travelMode = mode;
+    this.calculateAndDisplayRoute();
+
+    let bikeEl = document.getElementsByClassName("bike")[0];
+    let runEl = document.getElementsByClassName("run")[0];
+
+    switch (mode) {
+      case "WALKING":
+        runEl.setAttribute("id", "travelmode-selected");
+        bikeEl.setAttribute("id", "");
+        break;
+      default:
+        bikeEl.setAttribute("id", "travelmode-selected");
+        runEl.setAttribute("id", "");
+    }
+  }
+
   render() {
     return (
       <div className="route-builder-container">
@@ -178,7 +197,6 @@ class NewRoute extends React.Component {
                 onChange={this.update('searchInput')}
                 className="route-search-form-input"
                 id="route-search-form-input"
-                placeholder="Wallingford, Connecticut"
               />
               <button value="submit"
                 onClick={this.changeOrigin.bind(this)}
@@ -214,15 +232,17 @@ class NewRoute extends React.Component {
 
             <section className="activity-type-controls route-creation-controls">
               <a
-                className="route-creation-individual-control"
-                // onClick={}
+                className="route-creation-individual-control bike"
+                id="travelmode-selected"
+                onClick={this.selectTravelMode.bind(this, "BICYCLING")}
               >
                 <i className="material-icons md-30">directions_bike</i>
                 <label>Ride</label>
               </a>
               <a
-                className="route-creation-individual-control"
-                // onClick={}
+                className="route-creation-individual-control run"
+                id=""
+                onClick={this.selectTravelMode.bind(this, "WALKING")}
               >
                 <i className="material-icons md-30">directions_run</i>
                 <label>Run</label>
