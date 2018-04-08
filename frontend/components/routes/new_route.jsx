@@ -108,9 +108,11 @@ class NewRoute extends React.Component {
               className="route-search-form-input"
               id="route-search-form-input"
             />
-            <input type="submit" onClick={this.changeOrigin.bind(this)}>
-
-            </input>
+            <button value="submit"
+              onClick={this.changeOrigin.bind(this)}
+            >
+              <i className="material-icons">search</i>
+            </button>
           </form>
 
         </nav>
