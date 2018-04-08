@@ -78,6 +78,14 @@
       .route-creation-controls {
         display: flex;
         padding-right: 50px;
+
+        #travelmode-selected {
+          background-color: $map-select-gray;
+          i, label {
+            color: white;
+          }
+        }
+
         .route-creation-individual-control {
           display: flex;
           flex-direction: column;
@@ -91,6 +99,7 @@
 
           }
           label {
+            text-align: center;
             font-size: 12px;
             color: $darkgray;
             cursor: pointer;
@@ -102,6 +111,13 @@
 
           i, label {
             color: black;
+          }
+        }
+
+        .route-creation-individual-control:active {
+          background-color: $map-select-gray;
+          i, label {
+            color: white;
           }
         }
       }
