@@ -4,15 +4,11 @@
   height: 100%;
   width: 100%;
   flex: 1 1 auto;
-  .route-builder-navbar {
-    background-color: white;
-    position: fixed;
-    width: 100%;
-    height: 50px;
-    z-index: 101;
-    padding: 0 8vw;
-    display: flex;
-    justify-content: space-between;
+  #left-nav {
+    padding-left: 3vw;
+  }
+  #right-nav {
+    padding-right: 3vw;
   }
 
   .route-builder-controls {
@@ -22,10 +18,35 @@
     width: 100%;
     height: 50px;
     z-index: 101;
-    padding: 0 8vw;
+    padding: 0 3vw;
     display: flex;
     justify-content: space-between;
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
+    align-items: center;
+
+    .route-search-form {
+      display: flex;
+      align-items: center;
+      .route-search-form-input {
+        background-color: white;
+        font-size: 14px;
+        color: $darkgray;
+        width: 250px;
+        padding: 12px 10px;
+      }
+      .route-search-form-submit {
+        background-color: $map-search-gray;
+        padding: 9px 15px 8px;
+        display: flex;
+        align-items: center;
+        transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+      }
+
+      .route-search-form-submit:hover {
+        background-color: $map-select-gray;
+        color: white;
+      }
+    }
   }
 }
 

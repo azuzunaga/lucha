@@ -89,11 +89,11 @@ class NewRoute extends React.Component {
       <div className="route-builder-container">
         <nav className="header-nav">
 
-          <nav className="left-nav">
+          <nav className="left-nav" id="left-nav">
             <a href="#" className="header-logo">LUCHA</a>
           </nav>
 
-          <nav className="header-button right-nav">
+          <nav className="header-button right-nav" id="right-nav">
             <Link to="/routes" id="exit-builder-link">
               Exit Builder
             </Link>
@@ -110,6 +110,7 @@ class NewRoute extends React.Component {
             />
             <button value="submit"
               onClick={this.changeOrigin.bind(this)}
+              className="route-search-form-submit"
             >
               <i className="material-icons">search</i>
             </button>
