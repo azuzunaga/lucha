@@ -24,27 +24,64 @@
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
     align-items: center;
 
-    .route-search-form {
+    .left-controls {
       display: flex;
       align-items: center;
-      .route-search-form-input {
-        background-color: white;
-        font-size: 14px;
-        color: $darkgray;
-        width: 250px;
-        padding: 12px 10px;
-      }
-      .route-search-form-submit {
-        background-color: $map-search-gray;
-        padding: 9px 15px 8px;
+      justify-content: space-between;
+      .route-search-form {
         display: flex;
         align-items: center;
-        transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+        padding-right: 50px;
+        .route-search-form-input {
+          background-color: white;
+          font-size: 14px;
+          font-weight: 100;
+          color: $darkgray;
+          width: 250px;
+          padding: 12px 10px;
+        }
+        .route-search-form-submit {
+          background-color: $map-search-gray;
+          padding: 9px 15px 8px;
+          display: flex;
+          align-items: center;
+          transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+        }
+
+        .route-search-form-submit:hover {
+          background-color: $map-select-gray;
+          color: white;
+        }
       }
 
-      .route-search-form-submit:hover {
-        background-color: $map-select-gray;
-        color: white;
+      .route-creation-controls {
+        display: flex;
+        .route-creation-individual-control {
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          margin: 0 2px;
+          padding: 0 10px;
+          transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+
+          i {
+            color: $map-icon-gray;
+
+          }
+          label {
+            font-size: 12px;
+            color: $darkgray;
+            cursor: pointer;
+          }
+        }
+
+        .route-creation-individual-control:hover {
+          background-color: $map-search-gray;
+
+          i, label {
+            color: black;
+          }
+        }
       }
     }
   }
