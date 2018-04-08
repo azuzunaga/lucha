@@ -5,10 +5,26 @@ import { withRouter, Link } from 'react-router-dom';
 const mapOptions = {
   zoom: 14,
   center: {lat: 41.441, lng: -72.777},
-  mapTypeId: 'terrain'
+  mapTypeId: 'terrain',
+  streetViewControl: false
 };
 
 class NewRoute extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchInput: "Wallingford, Connecticut"
+    };
+
+    this.geocoder = new google.maps.Geocoder();
+  }
+
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
+  }
+
   componentDidMount() {
     const map = this.refs.map;
     this.map = new google.maps.Map(map, mapOptions);
@@ -20,6 +36,8 @@ class NewRoute extends React.Component {
     this.coordinates = [];
 
     this.map.addListener('click', this.handleClick.bind(this));
+
+    const centerControlDiv = document.getElementById("center-control-div");
   }
 
   handleClick(e) {
@@ -56,10 +74,51 @@ class NewRoute extends React.Component {
     });
   }
 
+  changeOrigin() {
+    this.geocoder.geocode( { 'address': this.state.searchInput}, (results, status) => {
+      if (status === 'OK') {
+        this.map.setCenter(results[0].geometry.location);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
   render() {
     return (
-      <div className="map" ref="map">
-        Map
+      <div className="route-builder-container">
+        <nav className="header-nav">
+
+          <nav className="left-nav">
+            <a href="#" className="header-logo">LUCHA</a>
+          </nav>
+
+          <nav className="header-button right-nav">
+            <Link to="/routes" id="exit-builder-link">
+              Exit Builder
+            </Link>
+          </nav>
+
+        </nav>
+        <nav className="route-builder-controls">
+          <form className="route-search-form">
+            <input type="text"
+              value={this.state.searchInput}
+              onChange={this.update('searchInput')}
+              className="route-search-form-input"
+              id="route-search-form-input"
+            />
+            <input type="submit" onClick={this.changeOrigin.bind(this)}>
+
+            </input>
+          </form>
+
+        </nav>
+        <div className="map-container">
+          <div className="map" ref="map">
+            Map
+          </div>
+        </div>
       </div>
     );
   }
