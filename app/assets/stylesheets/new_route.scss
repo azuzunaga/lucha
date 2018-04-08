@@ -25,7 +25,24 @@
     align-items: center;
 
     .right-controls {
-      
+      #no-directions-button {
+        background-color: $lightercorporate;
+        cursor: default;
+      }
+
+      .route-builder-button {
+        background-color: $corporate;
+        color: white;
+        font-weight: 700;
+        padding: 12px 30px;
+        font-size: 14px;
+        transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+      }
+
+      .route-builder-button:hover {
+        background-color: $darkcorporate;
+      }
+
     }
 
     .left-controls {

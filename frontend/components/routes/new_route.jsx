@@ -59,7 +59,7 @@ class NewRoute extends React.Component {
 
     this.map.addListener('click', this.handleClick.bind(this));
 
-    const centerControlDiv = document.getElementById("center-control-div");
+    this.saveButton = document.getElementsByClassName("route-builder-button")[0];
   }
 
   handleClick(e) {
@@ -75,21 +75,28 @@ class NewRoute extends React.Component {
 
     if (this.coordinates.length > 1) {
       this.calculateAndDisplayRoute();
+      this.saveButton.setAttribute("id", "");
+
     } else {
+      this.saveButton.setAttribute("id", "no-directions-button");
       this.marker = new google.maps.Marker({
         position: this.coordinates[0].location,
         map: this.map,
         icon: icon,
       });
       this.marker.setMap(this.map);
-
     }
   }
 
   calculateAndDisplayRoute () {
     this.marker.setMap(null);
 
+    if (this.coordIndex === 1) {
+      this.saveButton.setAttribute("id", "no-directions-button");
+    }
+
     const newCoordinates = this.coordinates.slice(0, this.coordIndex);
+    console.log(this.coordinates, this.coordIndex);
 
     const lastCoord = newCoordinates.length - 1;
     this.directionsService.route({
@@ -123,6 +130,8 @@ class NewRoute extends React.Component {
     this.coordinates = [];
     this.coordIndex = 0;
     this.directionsDisplay.set('directions', null);
+    this.marker.setMap(null);
+    this.saveButton.setAttribute("id", "no-directions-button");
   }
 
   coordAction(actionType) {
@@ -224,6 +233,7 @@ class NewRoute extends React.Component {
           <nav className="right-controls">
             <button
               className="action-button route-builder-button"
+              id="no-directions-button"
             >
               Save
             </button>
