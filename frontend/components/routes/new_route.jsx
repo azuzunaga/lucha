@@ -5,7 +5,7 @@ import { withRouter, Link } from 'react-router-dom';
 const mapOptions = {
   zoom: 14,
   center: {lat: 41.441, lng: -72.777},
-  streetViewControl: false
+  streetViewControl: false,
 };
 
 const polylineOptions = {
@@ -15,8 +15,8 @@ const polylineOptions = {
 };
 
 const icon = {
-  url: "https://cdn2.iconfinder.com/data/icons/font-awesome/1792/circle-o-16.png",
-  anchor: new google.maps.Point(10, 10)
+  url: "http://res.cloudinary.com/lucha/image/upload/v1523241799/map-marker.png",
+  anchor: new google.maps.Point(8, 8)
 };
 
 const rendererOptions = {
@@ -36,9 +36,12 @@ class NewRoute extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchInput: "Wallingford, Connecticut"
+      searchInput: "Wallingford, Connecticut",
+      title: "",
+      description: ""
     };
     this.coordinates = [];
+    this.newCoordinates = [];
     this.coordIndex = 0;
     this.geocoder = new google.maps.Geocoder();
     this.travelMode = "BICYCLING";
@@ -61,6 +64,7 @@ class NewRoute extends React.Component {
     this.map.addListener('click', this.handleClick.bind(this));
 
     this.saveButton = document.getElementsByClassName("route-builder-button")[0];
+
   }
 
   handleClick(e) {
@@ -95,14 +99,14 @@ class NewRoute extends React.Component {
       this.saveButton.setAttribute("id", "no-directions-button");
     }
 
-    const newCoordinates = this.coordinates.slice(0, this.coordIndex);
+    this.newCoordinates = this.coordinates.slice(0, this.coordIndex);
     console.log(this.coordinates, this.coordIndex);
 
-    const lastCoord = newCoordinates.length - 1;
+    const lastCoord = this.newCoordinates.length - 1;
     this.directionsService.route({
-      origin: newCoordinates[0].location,
-      waypoints: newCoordinates.slice(1, lastCoord),
-      destination: newCoordinates[lastCoord].location,
+      origin: this.newCoordinates[0].location,
+      waypoints: this.newCoordinates.slice(1, lastCoord),
+      destination: this.newCoordinates[lastCoord].location,
       travelMode: this.travelMode
     }, (response, status) => {
       if (status === 'OK') {
@@ -173,11 +177,19 @@ class NewRoute extends React.Component {
     }
   }
 
+  modalAction(type) {
+    
+  }
+
+  saveRoute(e) {
+    e.preventDefault();
+    console.log("Saving route");
+  }
+
   render() {
     return (
       <div className="route-builder-container">
         <nav className="header-nav">
-
           <nav className="left-nav" id="left-nav">
             <a href="#" className="header-logo">LUCHA</a>
           </nav>
@@ -187,7 +199,6 @@ class NewRoute extends React.Component {
               Exit Builder
             </Link>
           </nav>
-
         </nav>
         <nav className="route-builder-controls">
           <nav className="left-controls">
@@ -251,11 +262,48 @@ class NewRoute extends React.Component {
           </nav>
           <nav className="right-controls">
             <button
-              className="action-button route-builder-button"
+              className="action-button route-builder-button save-modal-button"
               id="no-directions-button"
+              onClick={this.modalAction("open")}
             >
               Save
             </button>
+            <section className="save-form-modal-container" id="map-modal-container">
+              <section className="save-form-modal-content">
+                <span className="modal-close js-modal-close" onClick={this.modalAction("close")}>
+                  &times;
+                </span>
+                <h2 id="save-form-title">Save</h2>
+                <form onSubmit={this.saveRoute} className="save-form">
+                  <label htmlFor="form-title">
+                    Route Name (required)
+                  </label>
+                  <input type="text"
+                    value={this.state.title}
+                    onChange={this.update('title')}
+                    className="save-form-input"
+                    id="form-title"
+                  />
+                  <label htmlFor="form-description">
+                    Description
+                  </label>
+                  <textarea
+                    value={this.state.description}
+                    onChange={this.update('description')}
+                    className="save-form-textarea"
+                    id="form-description"
+                  />
+                </form>
+                <section className="modal-form-buttons">
+                  <button className="modal-form-cancel modal-button" onClick={this.modalAction("close")}>
+                    Cancel
+                  </button>
+                  <button className="modal-form-save modal-button" onClick={this.saveRoute}>
+                    Save
+                  </button>
+                </section>
+              </section>
+            </section>
           </nav>
         </nav>
         <div className="map-container">
