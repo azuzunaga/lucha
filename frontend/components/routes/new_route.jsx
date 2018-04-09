@@ -47,13 +47,21 @@ class NewRoute extends React.Component {
       description: "",
       redirectToRoutes: false,
       center: {lat: 41.441, lng: -72.777},
-      zoom: 14
+      zoom: 14,
+      elevation: 0,
+      elevationStr: "0 ft",
+      distance: 0,
+      distanceStr: "0.00 mi",
+      duration: 0,
+      durationStr: "0s"
     };
     this.coordinates = [];
     this.newCoordinates = [];
     this.coordIndex = 0;
     this.geocoder = new google.maps.Geocoder();
     this.travelMode = "BICYCLING";
+    this.legs = [];
+    this.path = [];
   }
 
   update(field) {
@@ -109,7 +117,6 @@ class NewRoute extends React.Component {
     }
 
     this.newCoordinates = this.coordinates.slice(0, this.coordIndex);
-    console.log(this.coordinates, this.coordIndex);
 
     const lastCoord = this.newCoordinates.length - 1;
     this.directionsService.route({
@@ -119,10 +126,15 @@ class NewRoute extends React.Component {
       travelMode: this.travelMode
     }, (response, status) => {
       if (status === 'OK') {
-        const polyLine = response.routes[0].overview_polyline;
+        // const polyLine = response.routes[0].overview_polyline;
         this.directionsDisplay.setDirections(response);
-        // console.log('New polyline:', polyLine);
-        console.log('Response:', response);
+        this.legs = response.routes[0].legs;
+        this.path = response.routes[0].overview_path;
+
+        this.handleDistance();
+        this.handleDuration();
+        this.handleElevation();
+
       } else {
         window.alert('Directions request failed due to ' + status);
       }
@@ -145,6 +157,11 @@ class NewRoute extends React.Component {
     this.directionsDisplay.set('directions', null);
     this.marker.setMap(null);
     this.saveButton.setAttribute("id", "no-directions-button");
+    this.setState({
+      distanceStr: "0.00 mi",
+      durationStr: "0s",
+      elevationStr: "0 ft"
+    });
   }
 
   coordAction(actionType) {
@@ -217,6 +234,72 @@ class NewRoute extends React.Component {
       "center": bounds.getCenter(),
       "zoom": this.map.getZoom()
     });
+  }
+
+  handleElevation() {
+    let elevator = new google.maps.ElevationService;
+    console.log(elevator);
+  }
+
+  elevationCalculator(elevations) {}
+
+  elevationFormatter(elevation) {}
+
+  handleDistance() {
+    let legs = this.legs;
+    let distance = this.distanceCalculator(legs);
+    let distanceStr = this.distanceFormatter(distance);
+    this.setState({
+      "distance": distance,
+      "distanceStr": distanceStr
+    });
+  }
+
+  distanceCalculator(legs) {
+    let sum = 0;
+    for (let i = 0; i < legs.length; i++) {
+      sum = sum + legs[i].distance.value;
+    }
+    return sum * 0.000621371; // m to mi
+  }
+
+  distanceFormatter(distance) {
+    let distanceString = `${distance.toFixed(2)} mi`;
+    return distanceString;
+  }
+
+  handleDuration() {
+    let legs = this.legs;
+    let duration = this.durationCalculator(legs);
+    let durationStr = this.durationFormatter(duration);
+    this.setState({
+      "duration": duration,
+      "durationStr": durationStr
+    });
+  }
+
+  durationCalculator(legs) {
+    let sum = 0;
+    for (let i = 0; i < legs.length; i++) {
+      sum = sum + legs[i].duration.value;
+    }
+    return sum;
+  }
+
+  durationFormatter(duration) {
+    let durationString = "";
+
+    if (duration < 60) {
+      durationString = `${duration}s`;
+    } else {
+      let hours = parseInt(duration / 3600);
+      let minutes = parseInt((duration - hours*3600) / 60);
+      let seconds = duration % 60;
+
+      const leadingZero = number => number < 10 ? `0${number}` : number;
+      durationString = `${hours}:${leadingZero(minutes)}:${leadingZero(seconds)}`;
+    }
+    return durationString;
   }
 
   render() {
@@ -361,14 +444,40 @@ class NewRoute extends React.Component {
           </div>
         </div>
         <div className= "route-statistics-component">
-          <nav className="route-statistics-map-nav">
-            <div className="route-type-component">
+          <ul className="route-statistics-map-nav">
+            <li className="route-type-component">
               <h3 className="route-type">
                 {this.travelMode === "WALKING" ? "Run" : "Ride"}
               </h3>
-              <h3 className="route-type-label"></h3>
-            </div>
-          </nav>
+              <h4 className="route-type-label">
+                Route Type
+              </h4>
+            </li>
+            <li className="distance-component">
+              <h3 className="distance">
+                {this.state.distanceStr}
+              </h3>
+              <h4 className="distance-label">
+                Distance
+              </h4>
+            </li>
+            <li className="elevation-component">
+              <h3 className="elevation">
+                {this.state.elevationStr}
+              </h3>
+              <h4 className="elevation-label">
+                Elevation Gain
+              </h4>
+            </li>
+            <li className="moving-time-component">
+              <h3 className="moving-time">
+                {this.state.durationStr}
+              </h3>
+              <h4 className="moving-time-label">
+                Est. Moving Time
+              </h4>
+            </li>
+          </ul>
         </div>
         </div>
     );
