@@ -6,6 +6,13 @@
   flex: 1 1 auto;
   #left-nav {
     padding-left: 3vw;
+    display: flex;
+    align-items: center;
+    .new-route-tagline {
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 600;
+    }
   }
   #right-nav {
     padding-right: 3vw;

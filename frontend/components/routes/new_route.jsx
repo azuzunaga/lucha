@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const mapOptions = {
   zoom: 14,
@@ -40,7 +40,8 @@ class NewRoute extends React.Component {
     this.state = {
       searchInput: "Wallingford, Connecticut",
       title: "",
-      description: ""
+      description: "",
+      redirectToRoutes: false
     };
     this.coordinates = [];
     this.newCoordinates = [];
@@ -181,7 +182,6 @@ class NewRoute extends React.Component {
 
   modalAction(type) {
     const modalEl = document.getElementById("map-modal-container");
-    console.log("action type:", type, "element", modalEl);
     switch(type) {
       case "open":
         if (this.saveButton.id !== "no-directions-button") {
@@ -194,16 +194,22 @@ class NewRoute extends React.Component {
   }
 
   saveRoute(e) {
-    e.preventDefault();
-    console.log("Saving route");
+    this.setState({ redirectToRoutes: true });
   }
 
   render() {
+    if (this.state.redirectToRoutes) {
+      return (
+        <Redirect to="/routes" />
+      );
+    }
+
     return (
       <div className="route-builder-container">
         <nav className="header-nav">
           <nav className="left-nav" id="left-nav">
             <a href="#" className="header-logo">LUCHA</a>
+            <h2 className="new-route-tagline">Route Builder</h2>
           </nav>
 
           <nav className="header-button right-nav" id="right-nav">
@@ -287,7 +293,7 @@ class NewRoute extends React.Component {
                   &times;
                 </span>
                 <h2 id="save-form-title">Save</h2>
-                <form onSubmit={this.saveRoute} className="save-form">
+                <form className="save-form">
                   <label htmlFor="form-title">
                     Route Name (required)
                   </label>
@@ -313,7 +319,7 @@ class NewRoute extends React.Component {
                     Cancel
                   </button>
                   <button className="modal-form-save modal-button"
-                    onClick={this.saveRoute}>
+                    onClick={this.saveRoute.bind(this)}>
                     Save
                   </button>
                 </div>
