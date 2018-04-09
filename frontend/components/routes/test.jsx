@@ -5,7 +5,7 @@ class Test extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hover on the plus button and select "Create new route"</h1>
+        <h1>Hover on the plus button and select "Create a route"</h1>
       </div>
     );
   }
