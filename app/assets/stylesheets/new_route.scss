@@ -37,12 +37,108 @@
         padding: 12px 30px;
         font-size: 14px;
         transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+        &:hover {
+          background-color: $darkcorporate;
+        }
       }
 
-      .route-builder-button:hover {
-        background-color: $darkcorporate;
+
+      .save-form-modal-container {
+        display: none;
+        position: fixed;
+        z-index: 102;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
       }
 
+      .save-form-modal-content {
+        position: relative;
+        top: -15%;
+        margin: 15% auto;
+        padding: 20px;
+        width: 600px;
+        min-width: 600px;
+        #save-form-title {
+          background-color: $save-form-header-gray;
+          color: $darkestgray;
+          padding: 10px 30px;
+          font-size: 30px;
+          font-weight: 300;
+          border-bottom: 1px solid $gray;
+        }
+        .save-form {
+          background-color: $save-form-body-gray;
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          padding: 10px 30px;
+          font-size: 14px;
+          color: $darkgray;
+          label {
+            color: $darkgray;
+            padding: 10px 0;
+            font-weight: 100;
+            font-size: 13px;
+          }
+          .save-form-input {
+            background-color: white;
+            padding: 10px 5px;
+            border: 1px solid $gray;
+          }
+          .save-form-textarea {
+            background-color: white;
+            padding: 10px 5px;
+            height: 40px;
+            border: 1px solid $gray;
+          }
+        }
+        .modal-form-buttons {
+          display: flex;
+          justify-content: flex-end;
+          background-color: $save-form-body-gray;
+          height: 70px;
+          padding: 0 30px;
+          font-size: 14px;
+          align-items: center;
+          .modal-button {
+            margin-left: 10px;
+            border: 1px solid $gray;
+            padding: 10px 15px;
+          }
+          .modal-form-cancel {
+            background-color: white;
+            color: $darkestgray;
+            transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+            &:hover {
+              background-color: $map-search-gray;
+            }
+          }
+          .modal-form-save {
+            background-color: $darkestgray;
+            color: white;
+            transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+            &:hover {
+              background-color: $darkgray
+            }
+          }
+        }
+        .modal-close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+          padding-right: 10px;
+          &:hover {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+          }
+        }
+      }
     }
 
     .left-controls {
