@@ -41,7 +41,9 @@ class NewRoute extends React.Component {
       searchInput: "Wallingford, Connecticut",
       title: "",
       description: "",
-      redirectToRoutes: false
+      redirectToRoutes: false,
+      center: {lat: 41.441, lng: -72.777},
+      zoom: 14
     };
     this.coordinates = [];
     this.newCoordinates = [];
@@ -197,6 +199,22 @@ class NewRoute extends React.Component {
     this.setState({ redirectToRoutes: true });
   }
 
+  fitBounds() {
+    let LatLng;
+    let bounds = new google.maps.LatLngBounds();
+    for (let i = 0; i < this.newCoordinates.length; i++) {
+      LatLng = this.newCoordinates[i].location;
+      bounds.extend(LatLng);
+    }
+    this.map.fitBounds(bounds);
+    this.map.setZoom(this.map.getZoom() - 0.5);
+
+    this.setState({
+      "center": bounds.getCenter(),
+      "zoom": this.map.getZoom()
+    });
+  }
+
   render() {
     if (this.state.redirectToRoutes) {
       return (
@@ -286,6 +304,12 @@ class NewRoute extends React.Component {
             >
               Save
             </button>
+            <button
+              className="action-button route-builder-button"
+              onClick={this.fitBounds.bind(this)}
+            >
+              Fit Bounds
+          </button>
             <div className="save-form-modal-container-close" id="map-modal-container">
               <div className="save-form-modal-content">
                 <span className="modal-close js-modal-close"
