@@ -45,9 +45,12 @@
         }
       }
 
-
-      .save-form-modal-container {
+      .save-form-modal-container-close {
         display: none;
+      }
+
+      .save-form-modal-container-open {
+        display: block;
         position: fixed;
         z-index: 102;
         left: 0;

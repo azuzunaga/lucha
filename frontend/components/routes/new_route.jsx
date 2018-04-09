@@ -180,7 +180,17 @@ class NewRoute extends React.Component {
   }
 
   modalAction(type) {
-
+    const modalEl = document.getElementById("map-modal-container");
+    console.log("action type:", type, "element", modalEl);
+    switch(type) {
+      case "open":
+        if (this.saveButton.id !== "no-directions-button") {
+          modalEl.setAttribute("class", "save-form-modal-container-open");
+        }
+        break;
+      case "close":
+      modalEl.setAttribute("class", "save-form-modal-container-close");
+    }
   }
 
   saveRoute(e) {
@@ -266,13 +276,14 @@ class NewRoute extends React.Component {
             <button
               className="action-button route-builder-button save-modal-button"
               id="no-directions-button"
-              onClick={this.modalAction("open")}
+              onClick={() => this.modalAction("open")}
             >
               Save
             </button>
-            <section className="save-form-modal-container" id="map-modal-container">
-              <section className="save-form-modal-content">
-                <span className="modal-close js-modal-close" onClick={this.modalAction("close")}>
+            <div className="save-form-modal-container-close" id="map-modal-container">
+              <div className="save-form-modal-content">
+                <span className="modal-close js-modal-close"
+                  onClick={() => this.modalAction("close")}>
                   &times;
                 </span>
                 <h2 id="save-form-title">Save</h2>
@@ -296,16 +307,18 @@ class NewRoute extends React.Component {
                     id="form-description"
                   />
                 </form>
-                <section className="modal-form-buttons">
-                  <button className="modal-form-cancel modal-button" onClick={this.modalAction("close")}>
+                <div className="modal-form-buttons">
+                  <button className="modal-form-cancel modal-button"
+                    onClick={() => this.modalAction("close")}>
                     Cancel
                   </button>
-                  <button className="modal-form-save modal-button" onClick={this.saveRoute}>
+                  <button className="modal-form-save modal-button"
+                    onClick={this.saveRoute}>
                     Save
                   </button>
-                </section>
-              </section>
-            </section>
+                </div>
+              </div>
+            </div>
           </nav>
         </nav>
         <div className="map-container">
