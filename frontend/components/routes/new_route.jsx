@@ -6,6 +6,10 @@ const mapOptions = {
   zoom: 14,
   center: {lat: 41.441, lng: -72.777},
   streetViewControl: false,
+  zoomControl: true,
+  zoomControlOptions: {
+      position: google.maps.ControlPosition.RIGHT_TOP
+  }
 };
 
 const polylineOptions = {
@@ -309,7 +313,7 @@ class NewRoute extends React.Component {
               onClick={this.fitBounds.bind(this)}
             >
               Fit Bounds
-          </button>
+            </button>
             <div className="save-form-modal-container-close" id="map-modal-container">
               <div className="save-form-modal-content">
                 <span className="modal-close js-modal-close"
@@ -356,7 +360,17 @@ class NewRoute extends React.Component {
             Map
           </div>
         </div>
-      </div>
+        <div className= "route-statistics-component">
+          <nav className="route-statistics-map-nav">
+            <div className="route-type-component">
+              <h3 className="route-type">
+                {this.travelMode === "WALKING" ? "Run" : "Ride"}
+              </h3>
+              <h3 className="route-type-label"></h3>
+            </div>
+          </nav>
+        </div>
+        </div>
     );
   }
 }

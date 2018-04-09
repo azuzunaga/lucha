@@ -234,6 +234,25 @@
 
     }
   }
+
+  .route-statistics-component {
+
+    .route-statistics-map-nav {
+      display: flex;
+      box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
+      justify-content: space-between;
+      height: 50px;
+      align-items: center;
+      min-width: 250px;
+      position: fixed;
+      left: 0;
+      bottom: 5%;
+      width: 100%;
+      background-color: $map-nav-gray;
+      z-index: 101;
+      margin-left: 3vw;
+    }
+  }
 }
 
 #exit-builder-link {
@@ -245,8 +264,6 @@
 #exit-builder-link:hover {
     color: $corporate;
   }
-
-
 
 .map-container {
   height: 100%;
