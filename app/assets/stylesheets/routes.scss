@@ -1,0 +1,14 @@
+.route-detail-component {
+  display: flex;
+  width: 290px;
+  flex-direction: column;
+
+  .image-wrapper {
+    // background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 290px;
+    height: 190px;
+
+  }
+}
