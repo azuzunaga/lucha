@@ -13,7 +13,7 @@ import LoginFormContainer from './session_forms/login_form_container';
 import SignupFormContainer from './session_forms/signup_form_container';
 import SplashForm from './session_forms/splash_form';
 import DemoFormContainer from './session_forms/demo_form_container';
-import Test from './routes/route_index';
+import RouteIndexContainer from './routes/route_index_container';
 import NewRoute from './routes/new_route';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
