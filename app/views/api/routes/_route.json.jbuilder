@@ -7,4 +7,5 @@ json.extract! route, :id,
                      :distance,
                      :elevation,
                      :duration,
+                     :type,
                      :created_at

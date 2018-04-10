@@ -27,7 +27,8 @@ class Api::RoutesController < ApplicationController
         :image_url,
         :distance,
         :elevation,
-        :duration
+        :duration,
+        :type,
       )
   end
 end
