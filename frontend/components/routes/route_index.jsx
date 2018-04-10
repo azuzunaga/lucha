@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
-class Test extends React.Component {
+class RouteIndex extends React.Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class Test extends React.Component {
   }
 }
 
-export default withRouter(Test);
+export default withRouter(RouteIndex);
