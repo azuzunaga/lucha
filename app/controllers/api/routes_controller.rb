@@ -13,9 +13,9 @@ class Api::RoutesController < ApplicationController
     @route = Route.new(route_params)
 
     if @route.save
-      render :index
+      render "api/routes/index"
     else
-      render json: @route, status: :unprocessable_entity
+      render json: @route.errors.full_messages, status: 422
     end
   end
 
@@ -24,7 +24,7 @@ class Api::RoutesController < ApplicationController
   def route_params
     params.require(:route).
       permit(
-        :name,
+        :title,
         :description,
         :author_id,
         :polyline,

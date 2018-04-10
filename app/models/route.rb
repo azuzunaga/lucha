@@ -1,6 +1,5 @@
 class Route < ApplicationRecord
-  validates :name,
-            :description,
+  validates :title,
             :author_id,
             :polyline,
             :image_url,
