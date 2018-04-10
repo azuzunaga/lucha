@@ -250,7 +250,8 @@ class NewRoute extends React.Component {
       duration: 0,
       durationStr: "0s",
       polyline: "",
-      imageUrl: ""
+      imageUrl: "",
+      type: ""
     };
     this.coordinates = [];
     this.newCoordinates = [];
