@@ -5,7 +5,8 @@ class Route < ApplicationRecord
             :image_url,
             :distance,
             :elevation,
-            :duration, presence: true
+            :duration,
+            :type, presence: true
 
   belongs_to :author,
              class_name: :User,
