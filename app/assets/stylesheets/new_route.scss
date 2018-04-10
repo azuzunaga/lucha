@@ -5,7 +5,7 @@
   width: 100%;
   flex: 1 1 auto;
   #left-nav {
-    padding-left: 3vw;
+    padding-left: 13px;
     display: flex;
     align-items: center;
     .new-route-tagline {
@@ -15,7 +15,7 @@
     }
   }
   #right-nav {
-    padding-right: 3vw;
+    padding-right: 15px;
   }
 
   .route-builder-controls {
@@ -34,7 +34,7 @@
 
 
     .right-controls {
-      padding-right: 3vw;
+      padding-right: 13px;
       #no-directions-button {
         background-color: $lightercorporate;
         cursor: default;
@@ -158,7 +158,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-left: 3vw;
+      padding-left: 10px;
       .route-search-form {
         display: flex;
         align-items: center;
@@ -247,10 +247,10 @@
       position: fixed;
       left: 0;
       bottom: 5%;
-      width: 94vw;
+      width: calc(100vw - 23px);
       background-color: $map-nav-gray;
       z-index: 101;
-      margin-left: 3vw;
+      margin-left: 10px;
 
       h3 {
         font-size: 22px;

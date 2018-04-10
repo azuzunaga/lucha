@@ -8,7 +8,7 @@ const mapOptions = {
   streetViewControl: false,
   zoomControl: true,
   zoomControlOptions: {
-      position: google.maps.ControlPosition.RIGHT_TOP
+      position: google.maps.ControlPosition.LEFT_TOP
   }
 };
 
