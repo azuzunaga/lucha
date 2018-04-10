@@ -240,7 +240,7 @@
     .route-statistics-map-nav {
       display: flex;
       box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
-      justify-content: space-between;
+      justify-content: flex-start;
       height: 50px;
       align-items: center;
       min-width: 250px;
@@ -251,6 +251,23 @@
       background-color: $map-nav-gray;
       z-index: 101;
       margin-left: 3vw;
+
+      h3 {
+        font-size: 22px;
+        font-weight: 300;
+        color: $darkestgray;
+        padding-left: 20px;
+        padding-right: 60px;
+        margin: 0;
+      }
+      h4 {
+        font-size: 12px;
+        font-weight: 400;
+        color: $darkgray;
+        padding-left: 20px;
+        padding-right: 60px;
+        margin: 0;
+      }
     }
   }
 }

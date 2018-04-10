@@ -238,12 +238,30 @@ class NewRoute extends React.Component {
 
   handleElevation() {
     let elevator = new google.maps.ElevationService;
-    console.log(elevator);
+    elevator.getElevationAlongPath(
+      { path: this.path, samples: 56 },
+      this.elevationCalculator.bind(this)
+    );
   }
 
-  elevationCalculator(elevations) {}
+  elevationCalculator(elevations, status) {
+    let elevationGain = 0;
+    let elevationChange = 0;
+    if (status === "OK") {
+      for (let i = 1; i < elevations.length; i++) {
+        elevationChange = elevations[i].elevation - elevations[i - 1].elevation;
+        elevationGain += elevationChange > 0.33 ? elevationChange : 0;
+      }
+    }
+    elevationGain *= 3.28084;
+    this.setState({ elevation: elevationGain});
 
-  elevationFormatter(elevation) {}
+    this.elevationFormatter(elevationGain);
+  }
+
+  elevationFormatter(elevation) {
+    this.setState({ elevationStr: `${elevation.toFixed(0)} ft` });
+  }
 
   handleDistance() {
     let legs = this.legs;
