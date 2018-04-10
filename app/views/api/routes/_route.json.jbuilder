@@ -1,5 +1,5 @@
 json.extract! route, :id,
-                     :name,
+                     :title,
                      :description,
                      :author_id,
                      :polyline,
