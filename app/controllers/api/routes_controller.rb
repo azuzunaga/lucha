@@ -2,11 +2,7 @@ class Api::RoutesController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @routes = Route.find_by(author_id: current_user.id)
-  end
-
-  def show
-    @route = Route.find(params[:route_id])
+    @routes = current_user.routes
   end
 
   def create
