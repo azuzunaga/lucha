@@ -10,9 +10,9 @@ class User < ApplicationRecord
 
   # has_many :activities
   #
-  # has_many :routes,
-  #          source: :route,
-  #          foreign_key: :author_id
+  has_many :routes,
+           source: :route,
+           foreign_key: :author_id
   #
   # has_many :comments,
   #          source: :comment,
