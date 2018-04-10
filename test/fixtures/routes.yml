@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  author_id: 1
+  polyline: MyText
+  image_url: MyText
+  distance: 
+  elevation: 1
+  duration: 1
+
+two:
+  name: MyString
+  description: MyText
+  author_id: 1
+  polyline: MyText
+  image_url: MyText
+  distance: 
+  elevation: 1
+  duration: 1
