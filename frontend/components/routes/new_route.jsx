@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter, Link, Redirect } from 'react-router-dom';
+import { saveMap } from '../../util/map-utils'
 
 const mapStyles = [
   {
@@ -242,14 +243,14 @@ class NewRoute extends React.Component {
       title: "",
       description: "",
       redirectToRoutes: false,
-      center: {lat: 41.441, lng: -72.777},
-      zoom: 14,
       elevation: 0,
       elevationStr: "0 ft",
       distance: 0,
       distanceStr: "0.00 mi",
       duration: 0,
-      durationStr: "0s"
+      durationStr: "0s",
+      polyline: "",
+      imageUrl: ""
     };
     this.coordinates = [];
     this.newCoordinates = [];
@@ -322,7 +323,7 @@ class NewRoute extends React.Component {
       travelMode: this.travelMode
     }, (response, status) => {
       if (status === 'OK') {
-        // const polyLine = response.routes[0].overview_polyline;
+        const polyLine = response.routes[0].overview_polyline;
         this.directionsDisplay.setDirections(response);
         this.legs = response.routes[0].legs;
         this.path = response.routes[0].overview_path;
@@ -330,6 +331,8 @@ class NewRoute extends React.Component {
         this.handleDistance();
         this.handleDuration();
         this.handleElevation();
+
+        console.log(this.coordinates, polyLine);
 
       } else {
         window.alert('Directions request failed due to ' + status);
@@ -456,7 +459,9 @@ class NewRoute extends React.Component {
   }
 
   elevationFormatter(elevation) {
-    this.setState({ elevationStr: `${elevation.toFixed(0)} ft` });
+    let elev = elevation.toFixed(0);
+    elev = Number(elev).toLocaleString('en');
+    this.setState({ elevationStr: `${elev} ft` });
   }
 
   handleDistance() {
@@ -478,8 +483,9 @@ class NewRoute extends React.Component {
   }
 
   distanceFormatter(distance) {
-    let distanceString = `${distance.toFixed(2)} mi`;
-    return distanceString;
+    let dist = distance.toFixed(2);
+    dist = Number(dist).toLocaleString('en');
+    return `${dist} mi`;
   }
 
   handleDuration() {
