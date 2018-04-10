@@ -1,14 +1,45 @@
-.route-detail-component {
+@import 'variables';
+
+.route-index-component {
   display: flex;
-  width: 290px;
   flex-direction: column;
+  width: 100%;
+  .route-index-header {
+    h1 {
+      font-size: 30px;
+      font-weight: 300;
+      color: $almostdarkestgray;
+    }
 
-  .image-wrapper {
-    // background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 290px;
-    height: 190px;
-
+    .new-route-button {
+      background-color: $corporate;
+      color: white;
+      font-weight: 700;
+      padding: 12px 30px;
+      font-size: 14px;
+      transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+      &:hover {
+        background-color: $darkcorporate;
+      }
+      &:active {
+        background-color: $lightcorporate;
+      }
+    }
   }
+
+  .route-detail-component {
+    display: flex;
+    width: 290px;
+    flex-direction: column;
+
+
+    .route-detail-image {
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 290px;
+      height: 190px;
+
+    }
+  }
+
 }
