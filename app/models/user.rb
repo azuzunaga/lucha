@@ -11,23 +11,23 @@ class User < ApplicationRecord
   # has_many :activities
   #
   has_many :routes,
-           source: :route,
+           class_name: :Route,
            foreign_key: :author_id
   #
   # has_many :comments,
-  #          source: :comment,
+  #          class_name: :comment,
   #          foreign_key: :commenter_id
   #
   # has_many :likes,
-  #          source: :like,
+  #          class_name: :like,
   #          foreign_key: :liker_id
   #
   # has_many :follows,
-  #          source: :follow,
+  #          class_name: :follow,
   #          foreign_key: :follower_id
   #
   # has_many :followers,
-  #          source: :follow,
+  #          class_name: :follow,
   #          foreign_key: :followee_id
   #
   # has_one :image
