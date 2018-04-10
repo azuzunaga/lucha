@@ -409,12 +409,6 @@ class NewRoute extends React.Component {
             >
               Save
             </button>
-            <button
-              className="action-button route-builder-button"
-              onClick={this.fitBounds.bind(this)}
-            >
-              Fit Bounds
-            </button>
             <div className="save-form-modal-container-close" id="map-modal-container">
               <div className="save-form-modal-content">
                 <span className="modal-close js-modal-close"
