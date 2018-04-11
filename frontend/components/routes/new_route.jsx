@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter, Link, Redirect } from 'react-router-dom';
-import { saveMap } from '../../util/map-utils';
+import { saveMapImage } from '../../util/map-utils';
 import {
   mapOptions,
   rendererOptions,
-  ICON
+  ICON,
+  START_ICON,
 } from '../../util/map_options';
 
 class NewRoute extends React.Component {
@@ -97,7 +98,7 @@ class NewRoute extends React.Component {
       travelMode: this.travelMode
     }, (response, status) => {
       if (status === 'OK') {
-        const polyLine = response.routes[0].overview_polyline;
+        this.setState({polyline: response.routes[0].overview_polyline});
         this.directionsDisplay.setDirections(response);
         this.legs = response.routes[0].legs;
         this.path = response.routes[0].overview_path;
@@ -105,9 +106,7 @@ class NewRoute extends React.Component {
         this.handleDistance();
         this.handleDuration();
         this.handleElevation();
-
-        console.log(this.coordinates, polyLine);
-
+        // console.log([this.path[0].lat(), this.path[0].lng()]);
       } else {
         window.alert('Directions request failed due to ' + status);
       }
@@ -190,7 +189,16 @@ class NewRoute extends React.Component {
   }
 
   saveRoute(e) {
-    this.setState({ redirectToRoutes: true });
+    const pathEnd = this.path.length - 1;
+    const startCoord = [this.path[0].lat(), this.path[0].lng()];
+    const endCoord = [this.path[pathEnd].lat(), this.path[pathEnd].lng()];
+    let imageUrl = saveMapImage(
+      this.state.polyline,
+      startCoord,
+      endCoord
+    );
+    this.setState({ imageUrl: imageUrl });
+    console.log(this.state.imageUrl);
   }
 
   handleElevation() {
