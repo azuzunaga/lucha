@@ -3,8 +3,9 @@
 .route-index-component {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding: 0 15px;
+  width: 84%;
+  margin-left: 8vw;
+  margin-right: 8vw;
   position: absolute;
   top: 50px;
   left: 0;
@@ -48,6 +49,7 @@
       display: flex;
       align-items: center;
       margin-bottom: 25px;
+
       .left-label {
         border-left: 1px solid $gray;
         border-top: 1px solid $gray;
@@ -69,6 +71,7 @@
         padding: 10px 15px;
         text-align: center;
         font-size: 14px;
+        transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
       }
       input:checked + label {
         background-color: $typebuttongray;
