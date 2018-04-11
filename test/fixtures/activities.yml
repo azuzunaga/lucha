@@ -14,6 +14,8 @@
 #  start_datetime :datetime         not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  avg_speed      :float
+#  pace           :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
