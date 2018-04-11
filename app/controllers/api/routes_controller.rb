@@ -3,7 +3,6 @@ class Api::RoutesController < ApplicationController
 
   def index
     @routes = current_user.routes
-    # render "api/routes/index"
   end
 
   def create
