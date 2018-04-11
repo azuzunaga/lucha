@@ -15,7 +15,7 @@ const RouteDetail = ({ route }) => {
 
   console.log(safeUrl);
   return (
-    <li>
+    <li className="route-detail-card">
       <div className="route-detail-component">
         <div className="route-detail-image"
           style={{backgroundImage: `url(${safeUrl})`}}>

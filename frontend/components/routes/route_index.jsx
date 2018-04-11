@@ -32,8 +32,11 @@ class RouteIndex extends React.Component {
               <label htmlFor="run" className="right-label">Running</label>
             </li>
           </ul>
-          <ul>
+          <ul className="route-detail-cards">
             {routes.map(route => <RouteDetail key={route.id} route={route} />)}
+            <li className="filling-empty-space-childs"></li>
+            <li className="filling-empty-space-childs"></li>
+            <li className="filling-empty-space-childs"></li>
           </ul>
         </div>
       </div>

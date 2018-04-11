@@ -80,10 +80,26 @@
       }
 
     }
+
+    .route-detail-cards {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .filling-empty-space-childs {
+        width:290px;
+        height:0;
+      }
+
+    }
+
     .route-detail-component {
       display: flex;
       width: 290px;
       flex-direction: column;
+      align-self: left;
+      margin-bottom: 40px;
 
       .route-detail-image {
         background-position: center;
@@ -154,6 +170,6 @@
         }
       }
     }
-  }
+    }
 
 }
