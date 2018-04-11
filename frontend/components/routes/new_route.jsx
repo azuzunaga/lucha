@@ -420,22 +420,6 @@ class NewRoute extends React.Component {
     this.setState({ redirectToRoutes: true });
   }
 
-  fitBounds() {
-    let LatLng;
-    let bounds = new google.maps.LatLngBounds();
-    for (let i = 0; i < this.newCoordinates.length; i++) {
-      LatLng = this.newCoordinates[i].location;
-      bounds.extend(LatLng);
-    }
-    this.map.fitBounds(bounds);
-    this.map.setZoom(this.map.getZoom() - 0.5);
-
-    this.setState({
-      "center": bounds.getCenter(),
-      "zoom": this.map.getZoom()
-    });
-  }
-
   handleElevation() {
     let elevator = new google.maps.ElevationService;
     elevator.getElevationAlongPath(
@@ -484,8 +468,9 @@ class NewRoute extends React.Component {
   }
 
   distanceFormatter(distance) {
-    let dist = distance.toFixed(2);
-    dist = Number(dist).toLocaleString('en');
+    let dist = parseFloat(distance.toFixed(2)).
+    toLocaleString().
+    replace(/\.([0-9])$/, ".$10");
     return `${dist} mi`;
   }
 
