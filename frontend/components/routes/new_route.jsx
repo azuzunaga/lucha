@@ -118,13 +118,19 @@ class NewRoute extends React.Component {
     });
   }
 
-  changeOrigin() {
+  changeOrigin(e) {
+    e.preventDefault();
+    const searchEl = document.getElementById("route-search-form-input");
+    searchEl.classList.remove("error", "jiggle");
+
+
     this.geocoder.geocode( { 'address': this.state.searchInput}, (results, status) => {
       if (status === 'OK') {
         this.map.setZoom(11);
         this.map.setCenter(results[0].geometry.location);
       } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+        searchEl.classList.add("error", "jiggle");
+        setTimeout(function() { searchEl.classList.remove("jiggle"); }, 500);
       }
     });
   }
@@ -362,7 +368,7 @@ class NewRoute extends React.Component {
         </nav>
         <nav className="route-builder-controls">
           <nav className="left-controls">
-            <form className="route-search-form">
+            <form className="route-search-form" onSubmit={this.changeOrigin.bind(this)}>
               <input type="text"
                 value={this.state.searchInput}
                 onChange={this.update('searchInput')}
@@ -370,7 +376,6 @@ class NewRoute extends React.Component {
                 id="route-search-form-input"
               />
               <button value="submit"
-                onClick={this.changeOrigin.bind(this)}
                 className="route-search-form-submit"
               >
                 <i className="material-icons">search</i>
