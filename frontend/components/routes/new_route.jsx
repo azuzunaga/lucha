@@ -170,7 +170,6 @@ class NewRoute extends React.Component {
   }
 
   selectTravelMode(mode) {
-
     this.travelMode = mode;
 
     let bikeEl = document.getElementsByClassName("bike")[0];
