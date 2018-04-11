@@ -58,8 +58,6 @@ class NewRoute extends React.Component {
   }
 
   handleClick(e) {
-    console.log("Lat:", e.latLng.lat(), "Long:", e.latLng.lng());
-
     this.coordinates = this.coordinates.slice(0, this.coordIndex);
 
     this.coordinates.push({
@@ -110,7 +108,6 @@ class NewRoute extends React.Component {
         this.handleDistance();
         this.handleDuration();
         this.handleElevation();
-        console.log(response);
 
       } else {
         window.alert('Directions request failed due to ' + status);
