@@ -118,6 +118,7 @@ class NewRoute extends React.Component {
   changeOrigin() {
     this.geocoder.geocode( { 'address': this.state.searchInput}, (results, status) => {
       if (status === 'OK') {
+        this.map.setZoom(11);
         this.map.setCenter(results[0].geometry.location);
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
