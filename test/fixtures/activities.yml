@@ -1,0 +1,41 @@
+# == Schema Information
+#
+# Table name: activities
+#
+#  id             :integer          not null, primary key
+#  title          :string           not null
+#  user_id        :integer          not null
+#  polyline       :text             not null
+#  big_image_url  :text             not null
+#  distance       :float            not null
+#  elevation      :float            not null
+#  duration       :integer          not null
+#  sport          :string           not null
+#  start_datetime :datetime         not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  user_id: 1
+  polyline: MyText
+  big_image_url: MyText
+  distance: 1.5
+  elevation: 1.5
+  duration: 1
+  sport: MyString
+  start_datetime: 2018-04-11 14:40:02
+
+two:
+  title: MyString
+  user_id: 1
+  polyline: MyText
+  big_image_url: MyText
+  distance: 1.5
+  elevation: 1.5
+  duration: 1
+  sport: MyString
+  start_datetime: 2018-04-11 14:40:02
