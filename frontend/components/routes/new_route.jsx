@@ -219,6 +219,11 @@ class NewRoute extends React.Component {
     }))(this.state);
 
     this.props.processRouteForm(route);
+    this.navigateToRoutes();
+  }
+
+  navigateToRoutes() {
+    this.props.history.push("/routes");
   }
 
   addimage_url() {
