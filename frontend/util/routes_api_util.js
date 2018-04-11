@@ -2,7 +2,7 @@ export const createRoute = route => (
   $.ajax({
     url: 'api/routes',
     method: 'POST',
-    data: route,
+    data: { route },
   })
 );
 
