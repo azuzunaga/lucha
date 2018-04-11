@@ -1,5 +1,8 @@
-export const saveMap = (polyLine, styles) => {
-  console.log("Saving Map");
+import { staticMapURLBuilder } from './static-map-url-builder';
+
+export const saveMapImage = (polyLine, startCoord, endCoord) => {
+  let url = staticMapURLBuilder(polyLine, startCoord, endCoord);
+  return url;
 };
 
 export const elevationFormatter = elevation => {

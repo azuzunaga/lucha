@@ -217,6 +217,13 @@ export const ICON = {
   anchor: new google.maps.Point(8, 8)
 };
 
+export const START_ICON = {
+  url: "https://goo.gl/ucHdze",
+  size: new google.maps.Size(16, 16),
+  origin: new google.maps.Point(0, 0),
+  anchor: new google.maps.Point(8, 8)
+};
+
 export const rendererOptions = {
   // suppressMarkers: true,
   suppressBicyclingLayer: true,
