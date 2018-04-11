@@ -33,7 +33,8 @@ class RouteIndex extends React.Component {
             </li>
           </ul>
           <ul className="route-detail-cards">
-            {routes.map(route => <RouteDetail key={route.id} route={route} />)}
+            {routes.reverse().map(route =>
+              <RouteDetail key={route.id} route={route} />)}
             <li className="filling-empty-space-childs"></li>
             <li className="filling-empty-space-childs"></li>
             <li className="filling-empty-space-childs"></li>
