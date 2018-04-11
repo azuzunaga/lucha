@@ -1,0 +1,12 @@
+json.extract! activity, :id,
+              :title,
+              :user_id,
+              :polyline,
+              :big_image_url,
+              :distance,
+              :elevation,
+              :duration,
+              :sport,
+              :start_datetime,
+              :avg_speed,
+              :pace
