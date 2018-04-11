@@ -20,7 +20,7 @@ export const requestAllRoutes = () => dispatch => {
 };
 
 export const createRoute = route =>  dispatch => {
-  return RoutesApiUtil.createRoute().then(route => {
+  return RoutesApiUtil.createRoute(route).then(route => {
     dispatch(receiveRoute(route));
   });
 };
