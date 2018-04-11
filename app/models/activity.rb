@@ -17,4 +17,15 @@
 #
 
 class Activity < ApplicationRecord
+  validates :title,
+            :user_id,
+            :polyline,
+            :big_image_url,
+            :distance,
+            :elevation,
+            :duration,
+            :sport,
+            :start_datetime, presence: true
+
+  belongs_to :user
 end
