@@ -109,6 +109,8 @@ class NewRoute extends React.Component {
         this.handleDuration();
         this.handleElevation();
 
+        console.log(this.props.location.originPage);
+
       } else {
         window.alert('Directions request failed due to ' + status);
       }
@@ -228,10 +230,13 @@ class NewRoute extends React.Component {
     const pathEnd = this.path.length - 1;
     const startCoord = [this.path[0].lat(), this.path[0].lng()];
     const endCoord = [this.path[pathEnd].lat(), this.path[pathEnd].lng()];
+    const originPage = this.props.location.originPage;
+
     let image_url = saveMapImage(
       this.state.polyline,
       startCoord,
-      endCoord
+      endCoord,
+      originPage
     );
     this.setState({ image_url: image_url });
   }

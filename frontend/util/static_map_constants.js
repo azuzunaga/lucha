@@ -1,5 +1,6 @@
 export const prefix = "https://maps.googleapis.com/maps/api/staticmap?"
-export const sizeOption = "size=290x190";
+export const smallSize = "size=290x190";
+export const largeSize = "size=290x570";
 export const mapTypeOption = "maptype=roadmap";
 export const startMarkerOption = "markers=anchor:center|icon:https://goo.gl/ucHdze|";
 export const endMarkerOption = "markers=anchor:center|icon:https://goo.gl/tymZ5q|";
