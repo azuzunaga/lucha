@@ -440,10 +440,12 @@ class NewRoute extends React.Component {
                     id="form-description"
                   />
                   <div className="modal-form-buttons">
-                    <button className="modal-form-cancel modal-button"
+                    <h4
+                      href=""
+                      className="modal-form-cancel modal-button"
                       onClick={() => this.modalAction("close")}>
                       Cancel
-                    </button>
+                    </h4>
                     <input type="submit"
                       className="modal-form-save modal-button"
                       value="Save"
