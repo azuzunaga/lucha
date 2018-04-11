@@ -19,6 +19,19 @@ class RouteIndex extends React.Component {
           </Link>
         </div>
         <div className="route-detail-container">
+          <ul className="route-detail-type">
+            <li>
+              <input type="radio" name="type"
+                value="ride" checked
+              id="cycle" />
+              <label htmlFor="cycle" className="left-label">Cycling</label>
+            </li>
+            <li>
+              <input type="radio" name="type"
+              value="run" id="run" />
+              <label htmlFor="run" className="right-label">Running</label>
+            </li>
+          </ul>
           <ul>
             {routes.map(route => <RouteDetail key={route.id} route={route} />)}
           </ul>
