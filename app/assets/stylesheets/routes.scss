@@ -41,18 +41,115 @@
     }
   }
 
-  .route-detail-component {
-    display: flex;
-    width: 290px;
-    flex-direction: column;
+  .route-detail-container {
+    padding-top: 30px;
 
+    .route-detail-type {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+      .left-label {
+        border-left: 1px solid $gray;
+        border-top: 1px solid $gray;
+        border-bottom: 1px solid $gray;
+      }
+      .right-label {
+        border-right: 1px solid $gray;
+        border-top: 1px solid $gray;
+        border-bottom: 1px solid $gray;
+      }
 
-    .route-detail-image {
-      background-position: center;
-      background-repeat: no-repeat;
+      input {
+        visibility: hidden;
+        width: 0;
+        margin: 0;
+      }
+      label {
+        cursor: pointer;
+        padding: 10px 15px;
+        text-align: center;
+        font-size: 14px;
+      }
+      input:checked + label {
+        background-color: $typebuttongray;
+        color: white;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+      }
+
+    }
+    .route-detail-component {
+      display: flex;
       width: 290px;
-      height: 190px;
+      flex-direction: column;
 
+      .route-detail-image {
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 290px;
+        height: 190px;
+      }
+
+      .route-detail-stats {
+        background-color: $save-form-header-gray;
+        h2 {
+          margin-top: 15px;
+          margin-left: 20px;
+          font-weight: 200;
+        }
+
+        .route-main-stats {
+          display: flex;
+          justify-content: space-between;
+          margin-left: 20px;
+          margin-right: 40px;
+          margin-top: 30px;
+          h3 {
+            font-size: 30px;
+            font-weight: 300;
+            color: $almostdarkestgray;
+            padding: 0;
+            margin: 0;
+          }
+          h4 {
+            font-size: 15px;
+            font-weight: 400;
+            color: $map-icon-gray;
+            padding: 0;
+            margin: 0;
+          }
+        }
+        .route-detail-duration {
+          margin-left: 20px;
+          margin-top: 15px;
+          margin-bottom: 15px;
+          display: flex;
+          h4 {
+            font-size: 15px;
+            font-weight: 400;
+            color: $map-icon-gray;
+            padding: 0;
+            margin: 0;
+            margin-right: 5px;
+          }
+
+          h5 {
+            font-size: 15px;
+            font-weight: 400;
+            padding: 0;
+            margin: 0;
+          }
+        }
+      }
+
+      .route-detail-creation {
+        background-color: $save-form-body-gray;
+        h6 {
+          font-size: 12px;
+          color: $map-icon-gray;
+          font-weight: 300;
+          margin: 7px 20px;
+        }
+      }
     }
   }
 
