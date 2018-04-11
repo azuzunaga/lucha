@@ -6,7 +6,7 @@ class Route < ApplicationRecord
             :distance,
             :elevation,
             :duration,
-            :type, presence: true
+            :sport, presence: true
 
   belongs_to :author,
              class_name: :User,

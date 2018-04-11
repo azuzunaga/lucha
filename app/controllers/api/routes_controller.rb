@@ -11,7 +11,7 @@ class Api::RoutesController < ApplicationController
     if @route.save
       render "api/routes/index"
     else
-      render json: @route.errors.full_messages, status: 422
+      render json: @route.errors.full_messages#, status: 422
     end
   end
 
@@ -28,7 +28,7 @@ class Api::RoutesController < ApplicationController
         :distance,
         :elevation,
         :duration,
-        :type,
+        :sport,
       )
   end
 end

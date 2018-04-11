@@ -13,6 +13,7 @@ class NewRoute extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      author_id: this.props.currentUser.id,
       searchInput: "Wallingford, Connecticut",
       title: "",
       description: "",
@@ -24,8 +25,8 @@ class NewRoute extends React.Component {
       duration: 0,
       durationStr: "0s",
       polyline: "",
-      imageUrl: "",
-      type: ""
+      image_url: "",
+      sport: ""
     };
     this.coordinates = [];
     this.newCoordinates = [];
@@ -102,11 +103,15 @@ class NewRoute extends React.Component {
         this.directionsDisplay.setDirections(response);
         this.legs = response.routes[0].legs;
         this.path = response.routes[0].overview_path;
+        this.addimage_url();
+        const sport = this.travelMode === "WALKING" ? "running" : "bicycling";
+        this.setState({ sport: sport });
 
         this.handleDistance();
         this.handleDuration();
         this.handleElevation();
-        // console.log([this.path[0].lat(), this.path[0].lng()]);
+        console.log(response);
+
       } else {
         window.alert('Directions request failed due to ' + status);
       }
@@ -158,6 +163,7 @@ class NewRoute extends React.Component {
   }
 
   selectTravelMode(mode) {
+
     this.travelMode = mode;
     this.calculateAndDisplayRoute();
 
@@ -189,16 +195,42 @@ class NewRoute extends React.Component {
   }
 
   saveRoute(e) {
+    e.preventDefault();
+    const route = (({
+      title,
+      description,
+      author_id,
+      polyline,
+      image_url,
+      distance,
+      elevation,
+      duration,
+      sport
+    }) => ({
+      title,
+      description,
+      author_id,
+      polyline,
+      image_url,
+      distance,
+      elevation,
+      duration,
+      sport
+    }))(this.state);
+
+    this.props.processRouteForm(route);
+  }
+
+  addimage_url() {
     const pathEnd = this.path.length - 1;
     const startCoord = [this.path[0].lat(), this.path[0].lng()];
     const endCoord = [this.path[pathEnd].lat(), this.path[pathEnd].lng()];
-    let imageUrl = saveMapImage(
+    let image_url = saveMapImage(
       this.state.polyline,
       startCoord,
       endCoord
     );
-    this.setState({ imageUrl: imageUrl });
-    console.log(this.state.imageUrl);
+    this.setState({ image_url: image_url });
   }
 
   handleElevation() {
@@ -385,7 +417,7 @@ class NewRoute extends React.Component {
                   &times;
                 </span>
                 <h2 id="save-form-title">Save</h2>
-                <form className="save-form">
+                <form className="save-form" onSubmit={this.saveRoute.bind(this)}>
                   <label htmlFor="form-title">
                     Route Name (required)
                   </label>
@@ -404,17 +436,17 @@ class NewRoute extends React.Component {
                     className="save-form-textarea"
                     id="form-description"
                   />
+                  <div className="modal-form-buttons">
+                    <button className="modal-form-cancel modal-button"
+                      onClick={() => this.modalAction("close")}>
+                      Cancel
+                    </button>
+                    <input type="submit"
+                      className="modal-form-save modal-button"
+                      value="Save"
+                    />
+                  </div>
                 </form>
-                <div className="modal-form-buttons">
-                  <button className="modal-form-cancel modal-button"
-                    onClick={() => this.modalAction("close")}>
-                    Cancel
-                  </button>
-                  <button className="modal-form-save modal-button"
-                    onClick={this.saveRoute.bind(this)}>
-                    Save
-                  </button>
-                </div>
               </div>
             </div>
           </nav>
