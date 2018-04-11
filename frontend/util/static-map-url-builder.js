@@ -9,11 +9,11 @@ import {
   keyOption,
 } from "./static_map_constants";
 
-export const staticMapURLBuilder = (polyLine, startCoord, endCoord, originPage) => {
+export const staticMapURLBuilder = (polyLine, startCoord, endCoord, size) => {
   let startMarker = startMarkerOption + coordFormatter(startCoord);
   let endMarker = endMarkerOption + coordFormatter(endCoord);
   let polyLineOption = polylineFormatter(polyLine);
-  let sizeOption = originPage === "activities" ? largeSize : smallSize;
+  let sizeOption = size === "big" ? largeSize : smallSize;
 
   let url = [
     prefix,

@@ -26,6 +26,7 @@ class Api::RoutesController < ApplicationController
         :author_id,
         :polyline,
         :image_url,
+        :big_image_url,
         :distance,
         :elevation,
         :duration,

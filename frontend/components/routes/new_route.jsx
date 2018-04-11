@@ -26,6 +26,7 @@ class NewRoute extends React.Component {
       durationStr: "0s",
       polyline: "",
       image_url: "",
+      big_image_url: "",
       sport: ""
     };
     this.coordinates = [];
@@ -202,6 +203,7 @@ class NewRoute extends React.Component {
       author_id,
       polyline,
       image_url,
+      big_image_url,
       distance,
       elevation,
       duration,
@@ -212,6 +214,7 @@ class NewRoute extends React.Component {
       author_id,
       polyline,
       image_url,
+      big_image_url,
       distance,
       elevation,
       duration,
@@ -230,15 +233,22 @@ class NewRoute extends React.Component {
     const pathEnd = this.path.length - 1;
     const startCoord = [this.path[0].lat(), this.path[0].lng()];
     const endCoord = [this.path[pathEnd].lat(), this.path[pathEnd].lng()];
-    const originPage = this.props.location.originPage;
 
     let image_url = saveMapImage(
       this.state.polyline,
       startCoord,
       endCoord,
-      originPage
+      "small"
     );
     this.setState({ image_url: image_url });
+
+    let big_image_url = saveMapImage(
+      this.state.polyline,
+      startCoord,
+      endCoord,
+      "big"
+    );
+    this.setState({ big_image_url: big_image_url });
   }
 
   handleElevation() {

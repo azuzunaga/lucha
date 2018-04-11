@@ -1,7 +1,7 @@
 import { staticMapURLBuilder } from './static-map-url-builder';
 
-export const saveMapImage = (polyLine, startCoord, endCoord, originPage) => {
-  let url = staticMapURLBuilder(polyLine, startCoord, endCoord, originPage);
+export const saveMapImage = (polyLine, startCoord, endCoord, size) => {
+  let url = staticMapURLBuilder(polyLine, startCoord, endCoord, size);
   return url;
 };
 
