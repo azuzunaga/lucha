@@ -172,7 +172,6 @@ class NewRoute extends React.Component {
   selectTravelMode(mode) {
 
     this.travelMode = mode;
-    this.calculateAndDisplayRoute();
 
     let bikeEl = document.getElementsByClassName("bike")[0];
     let runEl = document.getElementsByClassName("run")[0];
@@ -186,6 +185,7 @@ class NewRoute extends React.Component {
         bikeEl.setAttribute("id", "travelmode-selected");
         runEl.setAttribute("id", "");
     }
+    this.calculateAndDisplayRoute();
   }
 
   modalAction(type) {
