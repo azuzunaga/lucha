@@ -13,9 +13,8 @@ class RouteDetail extends React.Component {
   }
 
   handleClick(e) {
-    console.log(this.props);
     if (this.props.clickHandler) {
-      this.props.setRouteId();
+      this.props.setRouteId(this.props.route.id);
     }
   }
 
