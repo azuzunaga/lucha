@@ -9,7 +9,8 @@ import NewActivity from './new_activity';
 const mapStateToProps = state => {
   return {
     currentUser: state.session.currentUser,
-    errors: state.errors.activities
+    errors: state.errors.activities,
+    routes: state.routes,
   };
 };
 
