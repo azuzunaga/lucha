@@ -1,0 +1,55 @@
+// Place all the styles related to the api/activities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variables';
+
+.activity-save-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // margin-left: 8vw;
+  // margin-right: 8vw;
+  position: absolute;
+  top: 50px;
+  left: 0;
+
+  .new-activity-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8vw;
+    margin-right: 8vw;
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 16px;
+      color: $almostdarkestgray;
+    }
+
+    input {
+      border: 1px solid $gray;
+      width: 240px;
+    }
+
+    #form-title {
+      width: 515px;
+    }
+
+    .activity-stats {
+      display: flex;
+      flex-direction: row;
+
+      div {
+        div {
+          display: inline;
+          div {
+            float: left;
+          }
+        }
+      }
+    }
+  }
+}
