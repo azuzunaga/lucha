@@ -12,14 +12,9 @@ class NewActivity extends React.Component {
       user_id: this.props.currentUser.id,
       polyline: "",
       big_image_url: "",
-      distance: 0,
-      elevation: 0,
-      duration: 0,
-      sport: "",
-      start_datetime: "",
-      avg_speed: 0,
-      pace: 0,
-      selectedOption: "bicycling",
+      distance: "",
+      elevation: "",
+      sport: "bicycling",
       date: "",
       time: "",
       hour: "",
@@ -50,11 +45,12 @@ class NewActivity extends React.Component {
       big_image_url,
       distance,
       elevation,
-      duration,
+      date,
+      time,
       sport,
-      start_datetime,
-      avg_speed,
-      pace
+      hour,
+      minute,
+      second
     }) => ({
       title,
       user_id,
@@ -62,16 +58,18 @@ class NewActivity extends React.Component {
       big_image_url,
       distance,
       elevation,
-      duration,
+      date,
+      time,
       sport,
-      start_datetime,
-      avg_speed,
-      pace
+      hour,
+      minute,
+      second
     }))(this.state);
-
+    console.log("saving:", this.state)
     this.props.processActivityForm(activity);
-    this.navigateToActivities();
-  }
+    // this.navigateToActivities();
+    }
+
 
   navigateToActivities() {
     this.props.history.push("/activities");
@@ -79,18 +77,18 @@ class NewActivity extends React.Component {
 
   render() {
     const allRoutes = this.props.routes;
-    const routes = allRoutes.filter(e => e.sport === this.state.selectedOption);
+    const routes = allRoutes.filter(e => e.sport === this.state.sport);
 
     return (
       <div className="activity-save-page">
         <div className="save-form-container">
-          <form className="new-activity-form">
+          <form className="new-activity-form"
+            onSubmit={this.handleSubmit.bind(this)}>
             <div>
               <input
                 type="submit"
                 value="Create"
                 className="form-save-button"
-                onSubmit={this.handleSubmit.bind(this)}
               />
             </div>
             <div className="form-title-div">
@@ -109,7 +107,14 @@ class NewActivity extends React.Component {
                 <label htmlFor="form-sport">
                   Activity type
                 </label>
-                <input type="text"
+                {/* <select>
+                  <option value="grapefruit">Grapefruit</option>
+                  <option value="lime">Lime</option>
+                  <option selected value="coconut">Coconut</option>
+                  <option value="mango">Mango</option>
+                </select> */}
+
+                <input type="select"
                   value={this.state.sport}
                   onChange={this.update('sport')}
                   className="activity-form-input"
@@ -143,51 +148,61 @@ class NewActivity extends React.Component {
                   <div className="stats-hour-input">
                     <input type="text"
                       value={this.state.hour}
-                      onChange={this.update('hour')}
+                      // onChange={this.update('hour')}
+                      onChange={this.update("hour")}
                       className="activity-form-input"
                       id="form-hour"
                     />
-                    <label for="form-hour">hr</label>
+                    <label htmlFor="form-hour">hr</label>
                   </div>
-                  <input type="text"
-                    value={this.state.minute}
-                    onChange={this.update('minute')}
-                    className="activity-form-input"
-                    id="form-minute"
-                    placeholder="min"
-                  />
-                  <input type="text"
-                    value={this.state.second}
-                    onChange={this.update('second')}
-                    className="activity-form-input"
-                    id="form-second"
-                    placeholder="s"
-                  />
+                  <div className="stats-minute-input">
+                    <input type="text"
+                      value={this.state.minute}
+                      onChange={this.update('minute')}
+                      className="activity-form-input"
+                      id="form-minute"
+                    />
+                    <label htmlFor="form-minute">min</label>
+                  </div>
+                  <div className="stats-second-input">
+                    <input type="text"
+                      value={this.state.second}
+                      onChange={this.update('second')}
+                      className="activity-form-input"
+                      id="form-second"
+                    />
+                    <label htmlFor="form-second">s</label>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="activity-stats two">
               <div className="stats-distance">
-                <input type="text"
-                  placeholder="9.87 mi"
-                  onChange={this.update('distance')}
-                  className="activity-form-input"
-                  id="form-distance"
-                />
                 <label htmlFor="form-distance" data-placeholder="9.87 mi">
                   Distance
                 </label>
+                <div className="stats-distance-input">
+                  <input type="text"
+                    placeholder="9.87 mi"
+                    onChange={this.update('distance')}
+                    className="activity-form-input"
+                    id="form-distance"
+                  />
+                  <label htmlFor="form-distance">mi</label>
+                </div>
               </div>
               <div className="stats-elevation">
                 <label htmlFor="form-elevation">
                   Elevation
                 </label>
-                <input type="text"
-                  placeholder="ft"
-                  onChange={this.update('elevation')}
-                  className="activity-form-input"
-                  id="form-elevation"
-                />
+                <div className="stats-elevation-input">
+                  <input type="text"
+                    onChange={this.update('elevation')}
+                    className="activity-form-input"
+                    id="form-elevation"
+                  />
+                  <label htmlFor="form-elevation">ft</label>
+                </div>
               </div>
             </div>
           </form>

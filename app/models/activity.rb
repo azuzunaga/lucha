@@ -21,8 +21,6 @@
 class Activity < ApplicationRecord
   validates :title,
             :user_id,
-            :polyline,
-            :big_image_url,
             :distance,
             :elevation,
             :duration,
@@ -30,4 +28,44 @@ class Activity < ApplicationRecord
             :start_datetime, presence: true
 
   belongs_to :user
+
+  def calculate_speed_and_pace(distance, duration)
+    distance = distance.to_f
+    duration = duration.to_f
+
+    speed = distance / (duration / 3600)
+    pace = (duration / 60) / distance
+
+    { speed: speed, pace: pace }
+  end
+
+  def self.parse(params)
+    start_datetime = params[:date] + params[:time]
+
+    hour = params[:hour].to_i * 3600
+    minute = params[:minute].to_i * 60
+    second = params[:second].to_i
+    duration = hour + minute + second
+
+    distance = params[:distance].to_f
+
+    avg_speed = distance / (duration / 3600)
+    pace = (duration / 60) / distance
+
+    activity = {
+      title: params[:title],
+      user_id: params[:user_id],
+      polyline: params[:polyline],
+      big_image_url: params[:big_image_url],
+      distance: params[:distance],
+      elevation: params[:elevation],
+      duration: duration,
+      sport: params[:sport],
+      start_datetime: start_datetime,
+      avg_speed: avg_speed,
+      pace: pace
+    }
+
+    Activity.new(activity)
+  end
 end

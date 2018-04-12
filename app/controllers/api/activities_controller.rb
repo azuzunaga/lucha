@@ -4,7 +4,7 @@ class Api::ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = Activity.new(activity_params)
+    @activity = Activity.parse(activity_params)
 
     if @activity.save
       render 'api/activities/index'
@@ -22,13 +22,14 @@ class Api::ActivitiesController < ApplicationController
         :user_id,
         :polyline,
         :big_image_url,
-        :distance,
+        :hour,
+        :minute,
+        :second,
         :elevation,
-        :duration,
         :sport,
-        :start_datetime,
-        :avg_speed,
-        :pace,
+        :date,
+        :time,
+        :distance
       )
   end
 end
