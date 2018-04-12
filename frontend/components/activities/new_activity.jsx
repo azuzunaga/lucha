@@ -14,7 +14,7 @@ class NewActivity extends React.Component {
       big_image_url: "",
       distance: "",
       elevation: "",
-      sport: "bicycling",
+      sport: "bycling",
       date: "",
       time: "",
       hour: "",
@@ -27,13 +27,17 @@ class NewActivity extends React.Component {
 
   componentDidMount() {
     this.props.requestAllRoutes();
-
+    forceUpdate();
   }
 
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  handleChange(e) {
+    this.setState({sport: e.target.value});
   }
 
   handleSubmit(e) {
@@ -69,18 +73,32 @@ class NewActivity extends React.Component {
     // this.navigateToActivities();
   }
 
-  handleClick(e, data) {
-    console.log(data, e);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.routeId > 0 ) {
+      const routeId = nextProps.routeId;
+      const route = nextProps.routes[routeId];
+      console.log("routId", routeId, "route", route);
+      this.setState({
+        title: route.title,
+        polyline: route.polyline,
+        big_image_url: route.big_image_url,
+        distance: route.distance,
+        elevation: route.elevation
+      });
+    }
   }
 
+  componentWillUnmount() {
+    this.props.clearRouteId();
+  }
 
   navigateToActivities() {
     this.props.history.push("/activities");
   }
 
   render() {
-    const allRoutes = this.props.routes;
-    const routes = allRoutes.filter(e => e.sport === this.state.sport);
+    const allRoutes = Object.values(this.props.routes);
+    let routes = allRoutes.filter(e => e.sport === this.state.sport);
 
     return (
       <div className="activity-save-page">
@@ -110,19 +128,10 @@ class NewActivity extends React.Component {
                 <label htmlFor="form-sport">
                   Activity type
                 </label>
-                {/* <select>
-                  <option value="grapefruit">Grapefruit</option>
-                  <option value="lime">Lime</option>
-                  <option selected value="coconut">Coconut</option>
-                  <option value="mango">Mango</option>
-                </select> */}
-
-                <input type="select"
-                  value={this.state.sport}
-                  onChange={this.update('sport')}
-                  className="activity-form-input"
-                  id="form-sport"
-                />
+                <select value={this.state.sport} onChange={this.handleChange.bind(this)}>
+                  <option value="bicycling">Ride</option>
+                  <option value="running">Run</option>
+                </select>
               </div>
               <div className="stats-date">
                 <label htmlFor="form-date">
@@ -186,7 +195,7 @@ class NewActivity extends React.Component {
                 </label>
                 <div className="stats-distance-input">
                   <input type="text"
-                    placeholder="9.87 mi"
+                    value={this.state.distance}
                     onChange={this.update('distance')}
                     className="activity-form-input"
                     id="form-distance"
@@ -200,6 +209,7 @@ class NewActivity extends React.Component {
                 </label>
                 <div className="stats-elevation-input">
                   <input type="text"
+                    value={this.state.elevation}
                     onChange={this.update('elevation')}
                     className="activity-form-input"
                     id="form-elevation"
@@ -210,7 +220,7 @@ class NewActivity extends React.Component {
             </div>
           </form>
         </div>
-        <div className="route-index-component">
+        <div className="route-index-component" id="activities-route-index">
           <div className="route-detail-container">
             <ul className="route-detail-cards">
               {routes.reverse().map(route =>

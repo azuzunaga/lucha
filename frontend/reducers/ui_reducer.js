@@ -1,16 +1,9 @@
-import merge from 'lodash/merge';
+import { combineReducers } from 'redux';
 
-import { RECEIVE_ROUTE_ID } from '../actions/ui_actions';
+import RouteIdReducer from './route_id_reducer';
 
-const uiReducer = (state = {}, action) => {
-  Object.freeze(state);
-
-  switch (action.type) {
-    case RECEIVE_ROUTE_ID:
-      return action.routeId;
-    default:
-     return state;
-  }
-};
+const uiReducer = combineReducers({
+  routeId: RouteIdReducer,
+});
 
 export default uiReducer;

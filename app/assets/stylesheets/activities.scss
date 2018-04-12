@@ -3,6 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'variables';
 
+#activities-route-index {
+  display: flex;
+  flex-direction: column;
+  width: 84%;
+  margin-left: 8vw;
+  margin-right: 8vw;
+  position: relative;
+  top: 50px;
+  left: 0;
+}
+
 .activity-save-page {
   display: flex;
   flex-direction: column;

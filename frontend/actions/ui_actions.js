@@ -1,10 +1,11 @@
 export const RECEIVE_ROUTE_ID = 'RECEIVE_ROUTE_ID';
+export const CLEAR_ROUTE_ID = 'CLEAR_ROUTE_ID';
 
-const receiveRouteId = routeId => ({
+export const setRouteId = routeId => ({
   type: RECEIVE_ROUTE_ID,
   routeId
 });
 
-export const setRouteId = routeId => dispatch => {
-  return dispatch(receiveRouteId(routeId));
-};
+export const clearRouteId = () => ({
+  type: CLEAR_ROUTE_ID,
+});
