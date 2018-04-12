@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 import RouteIndexContainer from '../routes/route_index_container';
-import RouteDetail from '../routes/route_detail';
+import RouteDetailContainer from '../routes/route_detail_container';
 
 class NewActivity extends React.Component {
   constructor(props) {
@@ -65,10 +65,13 @@ class NewActivity extends React.Component {
       minute,
       second
     }))(this.state);
-    console.log("saving:", this.state)
     this.props.processActivityForm(activity);
     // this.navigateToActivities();
-    }
+  }
+
+  handleClick(e, data) {
+    console.log(data, e);
+  }
 
 
   navigateToActivities() {
@@ -207,17 +210,17 @@ class NewActivity extends React.Component {
             </div>
           </form>
         </div>
-        {/* <div className="route-index-component">
+        <div className="route-index-component">
           <div className="route-detail-container">
             <ul className="route-detail-cards">
-          {routes.reverse().map(route =>
-          <RouteDetail key={route.id} route={route} />)}
-          <li className="filling-empty-space-childs"></li>
-          <li className="filling-empty-space-childs"></li>
-          <li className="filling-empty-space-childs"></li>
+              {routes.reverse().map(route =>
+                <RouteDetailContainer key={route.id} route={route} clickHandler={true} />)}
+              <li className="filling-empty-space-childs"></li>
+              <li className="filling-empty-space-childs"></li>
+              <li className="filling-empty-space-childs"></li>
             </ul>
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }

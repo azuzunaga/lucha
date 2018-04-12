@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import RouteDetail from './route_detail';
+import RouteDetailContainer from './route_detail_container';
 
 
 class RouteIndex extends React.Component {
@@ -51,7 +51,7 @@ class RouteIndex extends React.Component {
           </ul>
           <ul className="route-detail-cards">
             {routes.reverse().map(route =>
-              <RouteDetail key={route.id} route={route} />)}
+              <RouteDetailContainer key={route.id} route={route} clickHandler={false} />)}
             <li className="filling-empty-space-childs"></li>
             <li className="filling-empty-space-childs"></li>
             <li className="filling-empty-space-childs"></li>
