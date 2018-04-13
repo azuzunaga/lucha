@@ -67,14 +67,23 @@ class ActivityDetail extends React.Component {
     );
   }
 
-  render() {
-    let activity = this.props.activity;
-    console.log(activity);
-
+  routeImage(activity) {
     const safeUrl = encodeURI(activity.bigImageUrl);
     const imageWrapperStyle = {
       backgroundImage: `url(${safeUrl})`
     };
+
+    return ( activity.bigImageUrl === ""  ?
+      <div></div> :
+      <div className="activity-detail-image"
+        style={{backgroundImage: `url(${safeUrl})`}}>
+      </div>
+    );
+  }
+
+  render() {
+    let activity = this.props.activity;
+    console.log(activity);
 
     const fullUserName = this.props.firstName + " " + this.props.lastName;
 
@@ -101,9 +110,7 @@ class ActivityDetail extends React.Component {
               {this.activityStat(activity)}
             </ul>
           </div>
-          <div className="activity-detail-image"
-            style={{backgroundImage: `url(${safeUrl})`}}>
-          </div>
+          {this.routeImage(activity)}
         </div>
       </li>
     );
