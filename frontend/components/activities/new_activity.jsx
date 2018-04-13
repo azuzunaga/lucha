@@ -107,7 +107,7 @@ class NewActivity extends React.Component {
 
     return (
       <div className="activity-save-page">
-        <h1>My Routes</h1>
+        <h1>New Activity</h1>
         <div className="save-form-container">
           <form className="new-activity-form"
             onSubmit={this.handleSubmit.bind(this)}>
