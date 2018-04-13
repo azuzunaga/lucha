@@ -38,7 +38,6 @@ class UserStats extends React.Component {
   render() {
     const userStats = this.props.userStats;
 
-    console.log("in userstats", this.props.userStats.last_activity_title);
     return (
       <div className="user-card-component">
         <i className="big-profile-pic"></i>

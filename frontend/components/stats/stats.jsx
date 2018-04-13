@@ -20,7 +20,11 @@ class Stats extends React.Component {
             <UserStats userStats={this.props.stats.userStats} />
           </div>
         </div>
-        {/* <WeekStats weekStats={this.props.stats.weekStats} /> */}
+        <div className="weekly-stats-container">
+          <div className="stats-card">
+            <WeekStats weekStats={this.props.stats.weekStats} />
+          </div>
+        </div>
       </div>
     );
   }
