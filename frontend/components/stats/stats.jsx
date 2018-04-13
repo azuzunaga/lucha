@@ -4,17 +4,34 @@ import UserStats from './user_stats';
 import WeekStats from './week_stats';
 
 class Stats extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.requestAllStats();
   }
 
-  render() {
+  statsReceived() {
+    if (Object.keys(this.props.stats).length === 0) {
+      return null;
+    }
+
     return (
       <div>
-        <UserStats userStats={this.props.stats.userStats} />
-        <WeekStats weekStats={this.props.stats.weekStats} />
+        <div className="user-stats-container">
+          <div className="user-card">
+            <UserStats userStats={this.props.stats.userStats} />
+          </div>
+        </div>
+        {/* <WeekStats weekStats={this.props.stats.weekStats} /> */}
       </div>
     );
+  }
+
+  render() {
+    console.log("in stats", this.props.stats);
+      return(
+        <div>
+          {this.statsReceived()}
+        </div>
+      );
   }
 }
 

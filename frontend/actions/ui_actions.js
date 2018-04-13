@@ -2,7 +2,7 @@ import * as StatsApiUtil from '../util/stats_api_util';
 
 export const RECEIVE_ROUTE_ID = 'RECEIVE_ROUTE_ID';
 export const CLEAR_ROUTE_ID = 'CLEAR_ROUTE_ID';
-export const RECEIVE_USER_STATS = 'RECEIVE_USER_STATS';
+export const RECEIVE_STATS = 'RECEIVE_STATS';
 
 export const setRouteId = routeId => ({
   type: RECEIVE_ROUTE_ID,
@@ -14,7 +14,7 @@ export const clearRouteId = () => ({
 });
 
 const receiveAllUserStats = stats => ({
-  type: RECEIVE_USER_STATS,
+  type: RECEIVE_STATS,
   stats
 });
 

@@ -1,0 +1,47 @@
+@import 'variables';
+
+.about-container {
+  margin-top: 50px;
+  .about-card {
+    background-color: white;
+    // margin: 15px;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.05);
+    .about-card-component {
+      display: flex;
+      width: 280px;
+      flex-direction: column;
+      align-items: center;
+      .about-lucha {
+        margin: 15px;
+        h2 {
+          font-style: italic;
+          font-size: 14px;
+          color: $darkestgray;
+          margin-bottom: 15px;
+        }
+        p {
+          font-size: 16px;
+          strong {
+            color: $corporate;
+            font-family: $logo;
+          }
+        }
+      }
+      .about-myself {
+        width: 280px;
+        border-top: 1px solid $gray;
+        h1 {
+          font-size: 16px;
+          margin-top: 10px;
+          margin-left: 15px;
+        }
+        ul {
+          display: flex;
+          margin: 15px 50px;
+          justify-content: space-around;
+        }
+      }
+    }
+  }
+}

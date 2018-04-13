@@ -21,6 +21,7 @@ class Api::UserstatsController < ApplicationController
       size
 
     user_stats = {
+      name: current_user.first_name + " " + current_user.last_name,
       last_activity_title: title,
       last_activity_date: date,
       total_runs: total_runs,

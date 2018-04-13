@@ -1,12 +1,14 @@
-import { RECEIVE_USER_STATS } from '../actions/ui_actions';
+import { RECEIVE_STATS } from '../actions/ui_actions';
 
-const UserStatsReducer = (state = {}, action) => {
+const userStatsReducer = (state = {}, action) => {
   Object.freeze(state);
 
   switch (action.type) {
-    case RECEIVE_USER_STATS:
+    case RECEIVE_STATS:
       return action.stats;
     default:
       return state;
   }
 };
+
+export default userStatsReducer;

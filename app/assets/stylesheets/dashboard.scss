@@ -3,7 +3,7 @@
 .dashboard {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: $backgroundgray;
   height: calc(100% - 50px);
   width: 100%;
@@ -21,5 +21,12 @@
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+  .col1 {
+    margin-left: 6vw;
+  }
+
+  .col3 {
+    margin-right: 6vw;
   }
 }
