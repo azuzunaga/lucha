@@ -1,0 +1,111 @@
+@import 'variables';
+
+
+.activity-detail-container {
+  .activity-detail-card {
+    background-color: white;
+    margin: 15px;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.05);
+
+    .activity-detail-component {
+      display: flex;
+      width: 620px;
+      flex-direction: column;
+      align-items: center;
+
+      .activity-detail-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 570px;
+        margin-bottom: 15px;
+        .detail-header-icons {
+          display: flex;
+          flex-direction: column;
+          margin-top: 15px;
+          align-items: center;
+          margin-right: 30px;
+          .small-profile-pic {
+            padding: 25px 25px;
+            background-image: image-url("users/user_02.jpeg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            margin-bottom: 15px;
+          }
+          .material-icons {
+            color: $darkgray;
+          }
+        }
+
+        .detail-header-title {
+          margin-top: 20px;
+          h2 {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0;
+          }
+          h3 {
+            font-size: 11px;
+            color: $darkgray;
+            font-weight: 300;
+            margin: 0;
+            margin-top: 5px;
+            margin-bottom: 15px;
+          }
+          h1 {
+            font-size: 20px;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .activity-detail-stats {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        width: 570px;
+        .detail-stats-list {
+          display: flex;
+          margin-left: 80px;
+          .stats-distance {
+            margin-right: 40px;
+            &:after {
+              content: "";
+              background-color: $gray;
+              position: relative;
+              width: 1px;
+              height: 24px;
+              top: -35px;
+              left: 79px;
+              display: block;
+            }
+          }
+          h4 {
+            font-size: 12px;
+            font-weight: 300;
+            color: $darkgray;
+            margin: 0;
+            margin-bottom: 5px;
+          }
+          h3 {
+            font-size: 20px;
+            font-weight: 400;
+            color: $darkestgray;
+            margin: 0;
+          }
+        }
+      }
+
+      .activity-detail-image {
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 570px;
+        height: 190px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
