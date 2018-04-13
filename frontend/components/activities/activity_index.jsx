@@ -11,7 +11,6 @@ class ActivityIndex extends React.Component {
 
   render() {
     const activities = this.props.activities;
-    console.log(activities);
 
     activities.sort((a, b) => {
       return(

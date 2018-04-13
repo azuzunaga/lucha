@@ -26,8 +26,6 @@ class NewActivity extends React.Component {
       minute: "",
       second: "",
     };
-    console.log(this.props.history.location.pathname);
-    console.log(this.props);
   }
 
   componentDidMount() {

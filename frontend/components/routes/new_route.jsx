@@ -109,9 +109,6 @@ class NewRoute extends React.Component {
         this.handleDistance();
         this.handleDuration();
         this.handleElevation();
-
-        console.log(this.props.location.originPage);
-
       } else {
         window.alert('Directions request failed due to ' + status);
       }

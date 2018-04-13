@@ -83,7 +83,6 @@ class ActivityDetail extends React.Component {
 
   render() {
     let activity = this.props.activity;
-    console.log(activity);
 
     const fullUserName = this.props.firstName + " " + this.props.lastName;
 
