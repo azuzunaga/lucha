@@ -7,20 +7,19 @@
   background-color: $backgroundgray;
   height: calc(100% - 50px);
   width: 100%;
-  position: absolute;
-  top: 50px;
+  top: 25px;
+  background-attachment: fixed;
 
-  col1, col3 {
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-  }
+  overflow: hidden;
+  position: relative;
+  backface-visibility: hidden;
+  will-change: overflow;
 
-  col2 {
-    width: 590px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
+  .col2 {
+    overflow-y: scroll;
+    height: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
