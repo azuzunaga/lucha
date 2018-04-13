@@ -40,7 +40,7 @@ class Activity < ApplicationRecord
   end
 
   def self.parse(params)
-    start_datetime = params[:date] + " " + params[:time]
+    start_datetime = params[:date] + " " + params[:time] + " PDT" 
 
     hour = params[:hour].to_i * 3600
     minute = params[:minute].to_i * 60
