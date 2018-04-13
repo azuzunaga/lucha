@@ -30,7 +30,6 @@ class Stats extends React.Component {
   }
 
   render() {
-    console.log("in stats", this.props.stats);
       return(
         <div>
           {this.statsReceived()}
