@@ -11,6 +11,14 @@ class ActivityIndex extends React.Component {
 
   render() {
     const activities = this.props.activities;
+    console.log(activities);
+
+    activities.sort((a, b) => {
+      return(
+        new Date(a.startDatetime) - new Date(b.startDatetime)
+      );
+    });
+
     return (
       <div className="activity-index-component">
         <div className="activity-detail-container">
