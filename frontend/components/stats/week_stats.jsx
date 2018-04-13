@@ -24,7 +24,7 @@ class WeekStats extends React.Component {
         <h1>THIS WEEK</h1>
         <div className="mini-stats">
           <div className="ride-stats">
-            <i className="material-icons md-30">directions_bike</i>
+            <i className="material-icons md-36">directions_bike</i>
             <ul>
               <li>{weekStats.total_ride_miles.toFixed(2)} mi</li>
               <li>{this.formatDuration(weekStats.total_ride_duration)}</li>
@@ -32,7 +32,7 @@ class WeekStats extends React.Component {
             </ul>
           </div>
           <div className="run-stats">
-            <i className="material-icons md-30">directions_run</i>
+            <i className="material-icons md-36">directions_run</i>
             <ul>
               <li>{weekStats.total_run_miles.toFixed(2)} mi</li>
               <li>{this.formatDuration(weekStats.total_run_duration)}</li>
