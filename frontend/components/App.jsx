@@ -16,6 +16,7 @@ import DemoFormContainer from './session_forms/demo_form_container';
 import RouteIndexContainer from './routes/route_index_container';
 import NewRouteContainer from './routes/new_route_container';
 import NewActivityContainer from './activities/new_activity_container';
+import ActivityIndexContainer from './activities/activity_index_container';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -31,6 +32,7 @@ const App = () => (
       <ProtectedRoute path="/routes/new" component={NewRouteContainer} />
       <ProtectedRoute path="/routes" component={RouteIndexContainer} />
       <ProtectedRoute path="/activities/new" component={NewActivityContainer} />
+      <ProtectedRoute path="/activities" component={ActivityIndexContainer} />
       <AuthRoute path="/" component={SplashForm} />
     </Switch>
   </div>
