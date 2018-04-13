@@ -1,4 +1,10 @@
-# README
+# LUCHA
+
+[Live Demo]() (https://lucha-app.herokuapp.com)
+
+Lucha is an activity tracking website inspired by Strava. It uses a
+Rails/PostgreSQL backend, React.js and Redux on the frontend,
+and the Google Maps API for map interactivity. 
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
