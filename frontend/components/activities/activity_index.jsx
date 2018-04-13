@@ -9,4 +9,4 @@ class ActivityIndex extends React.Component {
   }
 }
 
-export default ActivityIndex;
+export default withRouter(ActivityIndex);
