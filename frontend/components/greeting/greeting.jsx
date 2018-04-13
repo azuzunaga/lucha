@@ -27,7 +27,7 @@ const personalGreeting = (currentUser, logout, addActivity, createRoute) => (
 
       <ul>
         <li id="activities-btn">
-          <Link to="/activities">My Activities</Link>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
         <li id="routes-btn">
           <Link to="/routes">My Routes</Link>

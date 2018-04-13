@@ -1,0 +1,26 @@
+@import "variables";
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: $backgroundgray;
+  height: calc(100% - 50px);
+  width: 100%;
+  position: absolute;
+  top: 50px;
+
+  col1, col3 {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  col2 {
+    width: 590px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+}
