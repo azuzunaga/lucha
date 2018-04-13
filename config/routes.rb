@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :routes, only: [:create, :index]
     resources :activities, only: [:create, :index]
-    resources :userstats, only: [:index, :show]
+    resources :userstats, only: [:index]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
