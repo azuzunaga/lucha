@@ -58,4 +58,4 @@ class RouteDetail extends React.Component {
   }
 }
 
-export default RouteDetail;
+export default withRouter(RouteDetail);
