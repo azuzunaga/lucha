@@ -43,12 +43,12 @@ class ActivityDetail extends React.Component {
         strDate = "Today";
         break;
       case 1:
-        strDate = "Yesterday"
+        strDate = "Yesterday";
         break;
       default:
         strDate = jsDate.toLocaleString('en-us', dateOptions);
     }
-    
+
     let strTime = jsDate.toLocaleString('en-us', timeOptions);
 
     return strDate + " at " + strTime;
