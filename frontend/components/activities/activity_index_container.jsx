@@ -9,7 +9,8 @@ import ActivityIndex from './activity_index';
 
 const mapStateToProps = state => {
   return {
-    routes: selectAllActivities(state),
+    activities: selectAllActivities(state),
+    currentUser: state.session.currentUser,
   };
 };
 
