@@ -40,7 +40,7 @@ class Activity < ApplicationRecord
   end
 
   def self.parse(params)
-    start_datetime = params[:date] + params[:time]
+    start_datetime = params[:date] + " " + params[:time]
 
     hour = params[:hour].to_i * 3600
     minute = params[:minute].to_i * 60
@@ -49,8 +49,8 @@ class Activity < ApplicationRecord
 
     distance = params[:distance].to_f
 
-    avg_speed = distance / (duration / 3600)
-    pace = (duration / 60) / distance
+    avg_speed = distance / (duration / 3600.0)
+    pace = ((duration / 60.0) / distance) * 60
 
     activity = {
       title: params[:title],
