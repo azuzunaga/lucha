@@ -10,7 +10,7 @@
   margin-left: 8vw;
   margin-right: 8vw;
   position: relative;
-  top: 50px;
+  top: 0;
   left: 0;
 }
 
@@ -18,21 +18,60 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  // margin-left: 8vw;
-  // margin-right: 8vw;
   position: absolute;
   top: 50px;
   left: 0;
 
+  h1 {
+    font-family: $main-font;
+    font-size: 30px;
+    font-weight: 300;
+    color: $almostdarkestgray;
+    padding-bottom: 30px;
+    margin-left: 8vw;
+    margin-right: 8vw;
+    margin-top: 30px;
+    border-bottom: 1px solid $gray;
+  }
+
+  h2 {
+    font-size: 16px;
+    color: $darkestgray;
+    margin-left: 8vw;
+    width: 520px;
+    text-align: left;
+
+  }
+
   .new-activity-form {
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     margin-left: 8vw;
     margin-right: 8vw;
+    padding-bottom: 30px;
 
-    div {
+    .form-header {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .form-save-button {
+        text-align: center;
+        width: 150px;
+        background-color: $corporate;
+        color: white;
+        font-weight: 700;
+        padding: 12px 0;
+        font-size: 14px;
+        transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+        &:hover {
+          background-color: $darkcorporate;
+        }
+        &:active {
+          background-color: $lightcorporate;
+        }
+      }
     }
 
     label {
@@ -40,25 +79,69 @@
       color: $almostdarkestgray;
     }
 
-    input {
-      border: 1px solid $gray;
-      width: 240px;
-    }
-
-    #form-title {
-      width: 515px;
+    .form-title-div {
+      display: flex;
+      flex-direction: column;
+      input {
+        border: 1px solid $gray;
+        width: 520px;
+      }
     }
 
     .activity-stats {
       display: flex;
-      flex-direction: row;
+      min-width: 800px;
+      width: 800px;
+      justify-content: space-between;
 
-      div {
-        div {
-          display: inline;
-          div {
-            float: left;
+      select {
+          width: 240px;
+          font-size: 14px;
+          border: none;
+          background-color: white;
+          border-radius: 0;
+          -webkit-appearance: none;
+          padding: 7px 5px;
+          &:hover {
+            cursor: pointer;
           }
+        }
+
+      .stats-empty {
+        width: 240px;
+        height: 1px;
+      }
+
+
+      .stats-input {
+        border: 1px solid $gray;
+        width: 240px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        label {
+          color: $gray;
+          font-size: 14px;
+        }
+        input {
+          text-align: center;
+          font-size: 14px;
+          padding: 7px 0;
+        }
+
+        .stats-mini-input {
+          display: flex;
+          flex-direction: row;
+          width: 80px;
+          align-items: center;
+          input {
+            width: 50px;
+            text-align: right;
+          }
+        }
+        .date-mini-input {
+          display: flex;
+          height: 30px;
         }
       }
     }
