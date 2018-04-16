@@ -41,14 +41,14 @@ class Api::UserstatsController < ApplicationController
                    end: today)
 
     runs = weekly_activities.where("sport = :sport", sport: "running")
-    total_run_miles = runs.pluck('distance').reduce(:+)
-    total_run_duration = runs.pluck('duration').reduce(:+)
-    total_run_elevation = runs.pluck('elevation').reduce(:+)
+    total_run_miles = runs.pluck('distance').reduce(0, :+)
+    total_run_duration = runs.pluck('duration').reduce(0, :+)
+    total_run_elevation = runs.pluck('elevation').reduce(0, :+)
 
     rides = weekly_activities.where("sport = :sport", sport: "bicycling")
-    total_ride_miles = rides.pluck('distance').reduce(:+)
-    total_ride_duration = rides.pluck('duration').reduce(:+)
-    total_ride_elevation = rides.pluck('elevation').reduce(:+)
+    total_ride_miles = rides.pluck('distance').reduce(0, :+)
+    total_ride_duration = rides.pluck('duration').reduce(0, :+)
+    total_ride_elevation = rides.pluck('elevation').reduce(0, :+)
 
     week_stats = {
       total_run_miles: total_run_miles,
