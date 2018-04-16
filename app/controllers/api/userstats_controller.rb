@@ -33,7 +33,7 @@ class Api::UserstatsController < ApplicationController
 
   def week_stats
     today = Time.now
-    prev_monday = today - (today.wday-1)*24*60*60 - today.hour*60*60 - today.min*60 - today.sec
+    prev_monday = today - ((today.wday-1)%7)*24*60*60 - today.hour*60*60 - today.min*60 - today.sec
 
     weekly_activities = Activity.where("user_id = :id AND start_datetime >= :start AND start_datetime < :end",
                      id: 2,
