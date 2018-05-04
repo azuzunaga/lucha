@@ -133,6 +133,7 @@
         li:hover {
           background-color: $gray;
           color: $corporate;
+          transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
         }
       }
   }
@@ -304,6 +305,7 @@
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: $lightercorporate;
 }
 
 .bg01 {
@@ -312,7 +314,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-color: $lightercorporate;
-
 }
 
 .bg02 {
@@ -337,6 +338,7 @@
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: $lightercorporate;
 }
 
 .bg05 {
@@ -345,7 +347,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-color: $lightercorporate;
-
 }
 
 .bg06 {
@@ -353,6 +354,7 @@
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: $lightercorporate;
 }
 
 .bg07 {
@@ -361,4 +363,5 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: $lightercorporate;
 }
