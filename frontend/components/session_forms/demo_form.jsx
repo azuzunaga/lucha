@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { randomBackgroundImage } from './util';
 
 class DemoForm extends React.Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class DemoForm extends React.Component {
   }
 
   componentDidMount() {
+    randomBackgroundImage();
+
     let button = document.getElementById("demo-login-button");
 
     setTimeout(
@@ -57,7 +60,7 @@ class DemoForm extends React.Component {
 
   render() {
     return (
-      <div className="bg02 bg">
+      <div className="bg">
         <div className="login-form-container">
           <h2 id="login-title">Log In</h2>
           <form className="login-form-box">

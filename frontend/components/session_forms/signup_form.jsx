@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { randomBackgroundImage } from './util';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -11,6 +12,10 @@ class SignupForm extends React.Component {
       last_name: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    randomBackgroundImage();
   }
 
   componentWillUnmount() {
@@ -39,7 +44,7 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="bg05 bg">
+      <div className="bg">
         <div className="signup-form-container login-form-container">
           <h2 id="login-title">Sign Up</h2>
           <form onSubmit={this.handleSubmit} className="signup-form-box login-form-box">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { randomBackgroundImage } from './util';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -46,9 +47,13 @@ class LoginForm extends React.Component {
     );
   }
 
+  componentDidMount(){
+    randomBackgroundImage();
+  }
+
   render() {
     return (
-      <div className="bg03 bg">
+      <div className="bg">
         <div className="login-form-container">
           <h2 id="login-title">Log In</h2>
           <h2 id="session-errors">{this.renderErrors()}</h2>
