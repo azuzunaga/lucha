@@ -14,7 +14,7 @@ class NewRoute extends React.Component {
     super(props);
     this.state = {
       author_id: this.props.currentUser.id,
-      searchInput: "Wallingford, Connecticut",
+      searchInput: "Golden Gate Park, San Francisco",
       title: "",
       description: "",
       redirectToRoutes: false,
@@ -123,7 +123,12 @@ class NewRoute extends React.Component {
 
     this.geocoder.geocode( { 'address': this.state.searchInput}, (results, status) => {
       if (status === 'OK') {
-        this.map.setZoom(11);
+        if (results[0].types[0] === 'locality' || results[0].types[0] === 'political') {
+          this.map.setZoom(12);
+        }
+        else {
+          this.map.setZoom(14);
+        }
         this.map.setCenter(results[0].geometry.location);
       } else {
         searchEl.classList.add("error", "jiggle");
