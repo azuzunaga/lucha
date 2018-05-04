@@ -3,9 +3,13 @@ export const randomBackgroundImage = () => {
 
   const imageEl = document.getElementsByClassName('bg')[0];
 
-  let randIdx = Math.floor(Math.random() * 8) % 7;
-
+  let randIdx = Math.floor(Math.random() * 8);
   let imageClass = bgImages[randIdx];
+
+  while (imageClass === imageEl.classList[1]) {
+    randIdx = Math.floor(Math.random() * 8);
+    imageClass = bgImages[randIdx];
+  }
 
   imageEl.setAttribute('class', 'bg  ' + imageClass);
 };
