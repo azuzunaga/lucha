@@ -194,8 +194,8 @@ export const MAP_STYLES = [
 ]
 
 export const mapOptions = {
-  zoom: 14,
-  center: {lat: 41.441, lng: -72.777},
+  zoom: 12,
+  center: {lat: 37.773972, lng: -122.431297},
   streetViewControl: false,
   zoomControl: true,
   zoomControlOptions: {
