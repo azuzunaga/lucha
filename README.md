@@ -8,21 +8,15 @@ and the Google Maps API for map interactivity.
 
 ## Features
 * Secure frontend to backend user authentication using BCrypt.
-* Users can create running or cyclling multi-waypoint routes using an embedded
-Google Map.
-  * The map was customized to allow for interactive route building, adding
-  waypoint controls and travel mode switching.
-  * Additionally, a color scheme that de-emphasizes highways and major
-  roads was chosen, making route creation easier.
-* Users can create activities, with or without associating a previously
-  created route.
-  * Clicking on a previously create route will auto-populate the distance and
-  time.
-* The dashboard page displays all of the user's activities, along with a total
-activity count and weekly statistics.
+* Users can create running or cycling multi-waypoint routes using an embedded Google Map.
+  * The map was customized to allow for interactive route building, adding waypoint controls and travel mode switching.
+  * Additionally, a color scheme that de-emphasizes highways and major roads was chosen, making route creation easier.
+* Users can create activities, with or without associating a previously created route.
+  * Clicking on a previously create route will auto-populate the distance and time.
+* The dashboard page displays all of the user's activities, along with a total activity count and weekly statistics.
 
 ## Google Maps API integration for route creation
-A custom color scheme was created for the route creation map - runners and cyclists don't usually run on highways or mayor thoroughfares, so these were de-emphasized. Overall, the color scheme was created to help the user choose a safe and pedestrian / cyclist friendly route. 
+A custom color scheme was created for the route creation map - runners and cyclists don't usually run on highways or mayor thoroughfares, so these were de-emphasized. Overall, the color scheme was created to help the user choose a safe and pedestrian / cyclist friendly route.
 
 Additional controls were added specifically to aid in the route creation process, including the ability to easily switch between travel modes and undo / redo waypoints.
 
@@ -44,7 +38,7 @@ Route statistics are filled when a route is clicked. The route card component is
 </ul>
 ```
 
-Since route id information lives in separate components a new slice of state was added to handle the click events and combined with the UI slice of state in the Redux store: 
+Since route id information lives in separate components a new slice of state was added to handle the click events and combined with the UI slice of state in the Redux store:
 
 ```js
 const RouteIdReducer = (state = {}, action) => {
@@ -98,7 +92,7 @@ componentWillReceiveProps(nextProps) {
 ## Technologies
 Since this project was build on a relatively small timeframe, Ruby on Rails was chosen due to it's ease and quickness of deployment, in addition to it's built-in support of relational databases and RESTful routes.
 
-Front end Redux states are kept normalized and separate, with individual reducers and actions for routes, activities, ui, session management, and errors. This keeps the state normalized, mimicking the data stored in the database and easing the updating of records. 
+Front end Redux states are kept normalized and separate, with individual reducers and actions for routes, activities, ui, session management, and errors. This keeps the state normalized, mimicking the data stored in the database and easing the updating of records.
 
 ### Additional resources
 + [Wireframes](https://github.com/azuzunaga/lucha/wiki/Wireframes)
