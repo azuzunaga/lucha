@@ -9,27 +9,45 @@ import {
 import RouteIndexContainer from '../routes/route_index_container';
 import RouteDetailContainer from '../routes/route_detail_container';
 
+const now = new Date();
+const timeOfDay = now.getHours() >= 4 && now.getHours() < 12 ? 'Morning' :
+  now.getHours() >= 12 && now.getHours() < 19 ? 'Afternoon' : 'Evening';
+
 class NewActivity extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
+      title: '',
       user_id: this.props.currentUser.id,
-      polyline: "",
-      big_image_url: "",
-      distance: "",
-      elevation: "",
-      sport: "bicycling",
-      date: "",
-      time: "",
-      hour: "",
-      minute: "",
-      second: "",
+      polyline: '',
+      big_image_url: '',
+      distance: '',
+      elevation: '',
+      sport: 'bicycling',
+      date: '',
+      time: '',
+      hour: this.getRandomInt(2),
+      minute: this.getRandomInt(60),
+      second: this.getRandomInt(60),
     };
+  }
+
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
   }
 
   componentDidMount() {
     this.props.requestAllRoutes();
+
+    const time = now.toString().slice(16, 24);
+    const date = now.toISOString().slice(0, 10);
+    const activityType = this.state.sport === 'bicycling' ? 'ride' : 'run';
+
+    this.setState({
+      time: time,
+      date: date,
+      title: `${timeOfDay} ${activityType}`
+    });
   }
 
   update(field) {
@@ -39,7 +57,10 @@ class NewActivity extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({sport: e.target.value});
+    this.setState({
+      sport: e.target.value,
+      title: `${timeOfDay} ${e.target.value === 'bicycling' ? 'ride' : 'run'}`
+    });
   }
 
   handleSubmit(e) {
@@ -96,7 +117,7 @@ class NewActivity extends React.Component {
   }
 
   navigateToActivities() {
-    this.props.history.push("/activities");
+    this.props.history.push('/activities');
   }
 
 
@@ -173,7 +194,6 @@ class NewActivity extends React.Component {
                       onChange={this.update("hour")}
                       className="activity-form-input"
                       id="form-hour"
-                      placeholder="1"
                     />
                     <label htmlFor="form-hour">hr</label>
                   </div>
@@ -183,7 +203,6 @@ class NewActivity extends React.Component {
                       onChange={this.update('minute')}
                       className="activity-form-input"
                       id="form-minute"
-                      placeholder="00"
                     />
                     <label htmlFor="form-minute">min</label>
                   </div>
@@ -192,7 +211,6 @@ class NewActivity extends React.Component {
                       value={this.state.second}
                       onChange={this.update('second')}
                       className="activity-form-input"
-                      placeholder="00"
                       id="form-second"
                     />
                     <label htmlFor="form-second">s</label>

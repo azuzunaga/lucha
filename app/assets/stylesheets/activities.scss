@@ -84,7 +84,9 @@
       flex-direction: column;
       input {
         border: 1px solid $gray;
-        width: 520px;
+        width: 510px;
+        padding: 7px 5px;
+        margin-bottom: 5px;
       }
     }
 
@@ -119,13 +121,14 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        margin-bottom: 5px;
         label {
           color: $gray;
           font-size: 14px;
         }
         input {
           text-align: center;
-          font-size: 14px;
+          font-size: 13px;
           padding: 7px 0;
         }
 
