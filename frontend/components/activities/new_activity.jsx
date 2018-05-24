@@ -9,6 +9,10 @@ import {
 import RouteIndexContainer from '../routes/route_index_container';
 import RouteDetailContainer from '../routes/route_detail_container';
 
+const now = new Date();
+const timeOfDay = now.getHours() >= 4 && now.getHours() < 12 ? 'Morning' :
+  now.getHours() >= 12 && now.getHours() < 19 ? 'Afternoon' : 'Evening';
+
 class NewActivity extends React.Component {
   constructor(props) {
     super(props);
@@ -35,12 +39,8 @@ class NewActivity extends React.Component {
   componentDidMount() {
     this.props.requestAllRoutes();
 
-    const now = new Date();
-
     const time = now.toString().slice(16, 24);
     const date = now.toISOString().slice(0, 10);
-    const timeOfDay = now.getHours() >= 4 && now.getHours() < 12 ? 'Morning' :
-      now.getHours() >= 12 && now.getHours() < 19 ? 'Afternoon' : 'Evening';
     const activityType = this.state.sport === 'bicycling' ? 'ride' : 'run';
 
     this.setState({
@@ -57,7 +57,10 @@ class NewActivity extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({sport: e.target.value});
+    this.setState({
+      sport: e.target.value,
+      title: `${timeOfDay} ${e.target.value === 'bicycling' ? 'ride' : 'run'}`
+    });
   }
 
   handleSubmit(e) {
