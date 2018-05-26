@@ -35,7 +35,7 @@ class Api::UserstatsController < ApplicationController
     today = Time.now
     prev_monday = today - ((today.wday-1) % 7)*24*60*60 - today.hour*60*60 - today.min*60 - today.sec
 
-    weekly_activities = Activity.where("user_id = :id AND start_datetime >= :start AND start_datetime < :end",
+    weekly_activities = Activity.where("user_id = :id AND start_datetime >= :start AND start_datetime <= :end",
                      id: 2,
                      start: prev_monday,
                    end: today)
