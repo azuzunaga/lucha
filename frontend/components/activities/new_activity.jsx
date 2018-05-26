@@ -39,8 +39,10 @@ class NewActivity extends React.Component {
   componentDidMount() {
     this.props.requestAllRoutes();
 
-    const time = now.toString().slice(16, 24);
-    const date = now.toISOString().slice(0, 10);
+    const time = now.toString().slice(16, 21);
+    let month = now.getMonth() + 1;
+    month = month < 10 ? '0' + month : month;
+    const date = `${now.getFullYear()}-${month}-${now.getDate()}`;
     const activityType = this.state.sport === 'bicycling' ? 'ride' : 'run';
 
     this.setState({
